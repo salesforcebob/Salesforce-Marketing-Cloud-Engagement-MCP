@@ -1,0 +1,7 @@
+---
+alwaysApply: true
+---
+- You are responsible for maintaining the project plan in docs/plan.md
+- You are responsible for intelligently deciding what to work on next based on the plan, and any foreseen blockers, dependencies, sequencing needs you foresee.
+- Mark off completed items as they become UAT accepted
+- You may modify the plan based on new learnings / pivots

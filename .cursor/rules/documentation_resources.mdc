@@ -1,0 +1,560 @@
+---
+description: Reference these documentation resources for any app/tool/service in the Salesforce platform / ecosystem
+globs: 
+alwaysApply: false
+---
+• Use your brave_web_search tool to search and crawl for information about Salesforce and it's products & services when you need to research how to accomplish something. The documentation links I provide below are starting points for crawling for information you might need to refine an idea or implementation approach. Check these resources first before searching more broadly across the internet.
+
+Helpful Salesforce Documentation links:
+
+- Salesforce APIs:
+-- about: Explore developer guides and reference docs for Salesforce APIs.
+-- url: https://developer.salesforce.com/docs/apis
+
+- Salesforce CLI:
+-- about: Use the sf cli tool to interact directly with a Salesforce org via command line
+-- url: https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev
+
+- Salesforce CLI Command Reference
+-- about: This command reference contains information about the Salesforce CLI commands and their flags.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_top.htm
+
+- Salesforce Help Site:
+-- about: All Salesforce documentation in one portal.
+-- url: https://help.salesforce.com
+
+- Trailhead:
+-- about: Get hands-on experience with Salesforce products and AI agent technology to understand the functionality so you can work smarter.
+-- url: https://trailhead.salesforce.com/
+
+- Models API
+-- about: Access large language models (LLMs) through the Einstein Trust Layer.
+-- url: https://developer.salesforce.com/docs/einstein/genai/references/about/about-genai-api.html
+
+- AJAX Toolkit Developer Guide:
+-- about: Embed API calls in Visualforce pages, buttons, and links with AJAX Toolkit — a JavaScript wrapper around SOAP API.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.ajax.meta/ajax/sforce_api_ajax_introducing.htm
+
+- AMPScript for Marketing Cloud:
+-- about: personalize messages and sites using one of Salesforce Marketing Cloud's native scripting languages
+-- url: https://developer.salesforce.com/docs/marketing/marketing-cloud-ampscript/overview
+
+- Account Engagement API (Pardot):
+-- about: Account Engagement helps marketers create meaningful connections, generate more pipeline, and empower sales to close more deals. Use the Account Engagement API to extend Account Engagement and automate your workflows.
+-- url: https://developer.salesforce.com/docs/marketing/pardot/overview
+
+- Actions Developer Guide:
+-- about: Actions allow you to build custom development tools for Lightning Platform applications. Actions are about “getting things done” in Salesforce. They encapsulate a piece of logic that allows a user to perform some work, such as sending email. When an action runs, it saves changes in your organization by updating the database.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.api_action.meta/api_action/actions_intro.htm
+
+- Agentforce Developer Guide:
+-- about: Agentforce and Einstein bring generative AI to your business at scale. The Einstein Platform with Trust Layer securely connects your data with the power of large language models (LLMs). Use Agentforce developer tools to build and run your AI agents.
+-- url: https://developer.salesforce.com/docs/einstein/genai/overview
+
+- Analytics Dashboard JSON Developer Guide:
+-- about: The easiest way to build a dashboard in CRM Analytics is to use the dashboard designer. However, if needed, you can further customize dashboards by editing their JSON files. The JSON defines the components of the dashboard and how they interact.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.bi_dev_guide_json.meta/bi_dev_guide_json/bi_dbjson_intro.htm
+
+- Analytics External Data API Developer Guide
+-- about: The External Data API enables you to upload external data files to CRM Analytics. The External Data API can upload .csv files, and you can optionally specify the structure of your data by defining metadata in JSON format.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.bi_dev_guide_ext_data.meta/bi_dev_guide_ext_data/bi_ext_data_overview.htm
+
+- Analytics SAQL Developer Guide
+-- about: Use SAQL (Salesforce Analytics Query Language) to access data in CRM Analytics dataset. CRM Analytics uses SAQL behind the scenes in lenses, dashboards, and explorer to gather data for visualizations.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.bi_dev_guide_saql.meta/bi_dev_guide_saql/bi_saql_intro.htm
+
+- Analytics SDK Developer Guide
+-- about: Use the Analytics SDK features to embed CRM Analytics functionality directly where your users work everyday, without having to transition between Lightning Experience and CRM Analytics Studio. The Analytics SDK lets you communicate and interact with CRM Analytics assets from Lightning Apps, Lightning Web Components, Apex, Visualforce, and more. You can create one cohesive experience powered by CRM Analytics features directly in Salesforce pages and apps.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.bi_dev_guide_sdk.meta/bi_dev_guide_sdk/bi_sdk_overview.htm
+
+- Apex Developer Guide
+-- about: Apex is a strongly typed, object-oriented programming language that allows developers to execute flow and transaction control statements on the Salesforce Platform server, in conjunction with calls to the API. This guide introduces you to the Apex development process and provides valuable information on learning, writing, deploying and testing Apex.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dev_guide.htm
+
+- Apex Reference Guide
+-- about: Apex is a strongly typed, object-oriented programming language that allows developers to execute flow and transaction control statements on the Salesforce Platform server, in conjunction with calls to the API. This reference guide includes built-in Apex classes, interfaces, enums, and exceptions, grouped by namespace. It also includes Apex DML statements to insert, update, merge, delete, and restore data in Salesforce.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_ref_guide.htm
+
+- Apex SDK for Slack
+-- about: Apex SDK for Slack (Beta) enables you to build powerful Slack apps on the Salesforce platform using a collection of tools designed to ease and accelerate development. Leverage the power of the Salesforce Platform and the Slack ecosystem to build rich experiences that delight your customers and improve workflows. Deliver amazing tools that improve user engagement and productivity across your organization.
+-- url: https://developer.salesforce.com/docs/platform/salesforce-slack-sdk
+
+- Automotive Cloud Integrations API
+-- about: ntegrate Automotive Cloud applications with other external systems to realize end-to-end business processes by using industry-specific APIs and integration assets that are based on the STAR Standard.
+-- url: https://developer.salesforce.com/docs/industries/automotive/overview
+
+- Canvas Developer Guide
+-- about: Canvas enables you to easily integrate a third-party application in Salesforce. Canvas is a set of tools and JavaScript APIs that you can use to expose an application as a Canvas app. Then take your new or existing applications and make them available to your users as part of their Salesforce experience.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.platform_connect.meta/platform_connect/canvas_framework_intro.htm
+
+- Communications Cloud TM Forum API
+-- about: TM Forum has defined Open API based on REST (Representational State Transfer) to standardize, facilitate interoperability, and achieve open digital architectures. Integrate Communications Cloud applications with other external systems to realize end to end business processes by using industry-specific APIs and integration assets that are based on the TM Forum standards.
+-- url: https://developer.salesforce.com/docs/industries/communications/overview
+
+- Communications, Media, and Energy (CME) Common APIs
+-- about: Use CME common REST APIs to perform the Configure, Price, Quote (CPQ), Digital Commerce (DC), and Enterprise Product Catalog (EPC) operations.
+-- url: https://developer.salesforce.com/docs/industries/cme/overview
+
+- Connect REST API Developer Guide
+-- about: Integrate mobile apps, intranet sites, and third-party web applications with Salesforce using Connect REST API. Responses are localized, structured for presentation, and can be filtered to contain only what the app needs.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/intro_what_is_chatter_connect.htm
+
+- Consumer Goods Cloud Developer Guide
+-- about: Consumer Goods includes the following: Retail Execution - Plan store visits for your field representatives and analyze your business's health across stores through the web portal. Use the Salesforce Retail Execution mobile app to stay organized while the fields representatives perform visit activities. Sync Management - Use the Sync Management app to configure how data is synced between Salesforce and mobile devices. Direct Store Delivery (DSD): Create routes and tours to define a list of stops for the driver to deliver the goods. Trade Promotion Management - Plan, create, and run promotional activities, and track them for better performance. You can go to Integration Service APIs guide to learn more about how the Integration APIs are used to integrate data from external systems to the Retail and Consumer Goods (RCG) Trade Promotion Management. Real Time Reporting (RTR): Provides real-time reports that can be exported and customized using Apex classes. For more information, go to Consumer Goods Cloud Real Time Reporting Developer Guide 
+-- url: https://developer.salesforce.com/docs/atlas.en-us.retail_api.meta/retail_api/retail_get_started_with_cg.htm
+
+- Consumer Goods Cloud Integration Service API
+-- about: Use the Integration Service API to run Consumer Goods Cloud Trade Promotion Management (TPM) as a transactional system.
+-- url: https://developer.salesforce.com/docs/industries/rcgps-integration-service/overview
+
+- Consumer Goods Cloud Real Time Reporting Developer Guide
+-- about: Explains the Salesforce configurations required to export CSV files from within Real Time Reporting (RTR) using the Integration API, and provides information on customizing the RTR using APEX. RTR exports support the export of BOM components.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.cgcloud_rtr_dev_guide.meta/cgcloud_rtr_dev_guide/rtr_integration_api_introduction.htm
+
+- Conversation Service API
+-- about: The Conversation Service API enables you to interact with conversational data on the Conversation Platform, offering tools to manage, access, and maintain your data effectively. Currently, the APIs support the deletion of Messaging End User data via the Delete API.
+-- url: https://developer.salesforce.com/docs/service/conversation-service-api/overview
+
+- Data Cloud Connect REST API
+-- about: Use Salesforce Data Cloud Connect REST API to build custom solutions on top of Data Cloud and take advantage of uniform implementation and testing practices. Get metadata and query customer profile information, calculated insights, identity resolution rulesets, and segments. Get, create, update, run, and delete calculated insights. Get, create, update, and delete segments. Get, create, run, update, and delete identity resolution rulesets. Look up objects by source ID. Make predictions based on historical data. Understand the top factors contributing to the prediction and learn how you can make improvements.
+-- url: https://developer.salesforce.com/docs/data/connectapi/overview
+
+- Data Cloud Developer Guide
+-- about: With Data Cloud, you can consolidate and process large volumes of data from various sources and integrate it with Salesforce CRM data, avoiding data silos. Data Cloud uses a lakehouse to store your data and connect it with the Salesforce Platform. You can process data at scale, query the data, and create insights from billions of records. Customer data is unified so that you can create rich insights for customer profiles.
+-- url: https://developer.salesforce.com/docs/data/data-cloud-dev/guide/get-started.html
+
+- Data Cloud Integration Guide
+-- about: How data is ingested, connected, and integrated with Data Cloud through connectors, connector services, integrations, enterprise data, and strategic partners.
+-- url: https://developer.salesforce.com/docs/data/data-cloud-int/guide/c360-a-data-cloud-integrations.html
+
+- Data Cloud Query Guide
+-- about: Salesforce Data Cloud enables you to collect, store, and process data from various sources, including Salesforce clouds and external systems. After harmonizing and unifying your data, you can create metrics that span all data sources, providing comprehensive insights. To extract valuable insights from your Data Cloud data, you can query it using various methods, including integrated apps, object-specific APIs, client libraries, and Data Cloud query APIs. 
+-- url: https://developer.salesforce.com/docs/data/data-cloud-query-guide/guide/query-guide-get-started.html
+
+- Data Cloud Reference Guide
+-- about: Reference information about Data Cloud Objects and APIs. Salesforce provides programmatic access to Data Cloud information using simple, robust, and secure RESTful APIs. You can also integrate your web and mobile applications using Data Cloud SDKs. For information about Data Cloud architecture and the app development process, see Data Cloud Developer Guide.
+-- url: https://developer.salesforce.com/docs/data/data-cloud-ref/guide/c360a-api-intro-cdpapis.html
+
+- The Salesforce Data Model Gallery
+-- about: The Salesforce Data Model Gallery is a curated collection of diagrams that illustrate the underlying data models for Salesforce products, features, and clouds. It’s a resource designed to support customers, developers, solution engineers, and data architects in understanding how data is structured across Salesforce — enabling better solution design, integration planning, and implementation strategy. Consume diagram images from this resource to quickly understand best practice architectures for interplay between different objects coming together to create a model.
+-- url: https://developer.salesforce.com/docs/platform/data-models/guide/get-started.html
+
+- Data Prep Recipe REST API Developer Guide
+-- about: You can access Data Prep recipes for CDP, Salesforce Data Pipelines, and CRM Analytics programmatically using the Recipe REST API. Using the Recipe REST API, you can: Run, schedule, and sync recipes; Retrieve or update recipe metadata.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_recipes_api.meta/salesforce_recipes_api/sforce_recipes_api_overview.htm
+
+- Data.com API Guide
+-- about: Data.com API provides Data.com Prospector and Data.com Clean with data to add to your Salesforce organization, providing financial insights, hierarchical views of companies, and accurate contact information.
+-- url: https://developer.salesforce.com/docs/sales/datadotcom-api/overview
+
+- Designing Record Access for Enterprise Scale
+-- about: This guide introduces advanced topics in user record access, and provides recommendations on how to configure your organization to optimize access control performance.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.draes.meta/draes/draes_introduction.htm
+
+- Education Cloud Developer Guide
+-- about: Use Education Cloud to support the entire learner experience, including managing applications, scheduling, courses, facilities, and more.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.edu_cloud_dev_guide.meta/edu_cloud_dev_guide/edu_cloud_intro.htm
+
+- Einstein Discovery REST API Developer Guide
+-- about: You can access Einstein Discovery features such as predictions, models, and stories programmatically using the Einstein Discovery REST API. Using the Einstein Discovery REST API, you can create and retrieve Einstein 
+
+- Employee Service Integrations API
+--  about: Integrate Employee Service applications with other external systems to realize end-to-end business processes by using industry-specific APIs and integration assets.
+-- url: https://developer.salesforce.com/docs/industries/employeeservice/overview
+
+- Energy and Utilities Cloud API
+-- about: Energy and Utilities Cloud Open API are based on REST to standardize, facilitate interoperability, and achieve open digital architectures. Integrate Energy and Utilities Cloud applications with other external systems to realize end to end business processes.
+-- url: https://developer.salesforce.com/docs/industries/energy/overview
+
+- Energy and Utilities Cloud Developer Guide
+-- about: The Energy & Utilities Cloud extends Salesforce Customer 360 to provide solutions for the energy and utilities industry. It helps businesses establish their presence online, improve operational efficiency, and deliver industry-standard customer experiences.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.eu_developer_guide.meta/eu_developer_guide/eu_intro.htm
+
+- Engagement Mobile SDK
+-- about: Integrate mobile apps with Data Cloud and MobilePush. Drive engagement and create a unified profile of a customer to enable hyper-personalized engagement across multiple clouds, including Marketing, Commerce, and Service.
+-- url: https://developer.salesforce.com/docs/marketing/engagement-mobile-sdk/overview
+
+- Core Components in Enterprise Sales Management
+-- about: Enterprise Sales Management provides a library of reusable core components that are used as the building blocks for this implementation. Core components handle specific functions used across the various flows built in the solution. You can leverage these core components when you build customized solutions in your projects.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.esm_developer_guide.meta/esm_developer_guide/comms_t_core_components_in_enterprise_sales_management_64285.htm
+
+- Event Relay
+-- about: Send platform events and change data capture events from Salesforce to Amazon Web Services (AWS), and achieve end-to-end event flow by sending events back to Salesforce. With Event Relay, you can stream events to AWS natively without writing an integration app.
+-- url: https://developer.salesforce.com/docs/platform/event-relay/overview
+
+- Examples of Advanced Formula Fields
+-- about: Review examples of formula fields for various types of apps that you can use and modify for your own purposes.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.usefulFormulaFields.meta/usefulFormulaFields/useful_advanced_formulas.htm
+
+- Examples of Validation Rules
+-- about: Review examples of validation rules for various types of apps that you can use and modify for your own purposes. Validation rules verify that the data a user enters in a record meets the standards you specify before the user can save the record.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.usefulValidationRules.meta/usefulValidationRules/fields_useful_field_validation_formulas.htm
+
+- Experience Cloud Developer Guide
+-- about: Experience Builder templates let you create branded sites where your employees, customers, and partners can connect. Built on the Lightning Component framework, Experience Builder templates include many ready-to-use features and Lightning components. But the real power of the Lightning Component framework is that you can develop custom Lightning components and features to meet your unique business needs and completely transform the look and feel of your site.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro.htm
+
+- Federated Search Developer Guide
+-- about: The Federated Search API connects the Salesforce federated search connector to the external search provider. The API enables data from external repositories be searched and returned within Salesforce. External search providers have partnered with Salesforce to provide a search service that conforms to the Salesforce API.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.federated_search.meta/federated_search/federated_search_intro.htm
+
+- Field Audit Trail Implementation Guide
+-- about: Use Salesforce Metadata API to define a field history retention policy for the fields that have history tracking enabled. Then use REST API, SOAP API, and Tooling API to work with your archived data.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.field_history_retention.meta/field_history_retention/field_audit_trail.htm
+
+- Field Service Developer Guide
+-- about: Field Service is a powerful, highly customizable toolbox of features that you can use to set up and manage a multiplatform, mobile service operation. This guide offers reference information and code examples to help you understand the structure of Field Service features and customize them with code.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.field_service_dev.meta/field_service_dev/fsl_dev_introduction.htm
+
+- Financial Services Cloud Developer Guide
+-- about: Use the fields, objects, and metadata that extend Salesforce for Financial Services Cloud. Apex trigger information is also provided.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_object_reference.meta/financial_services_cloud_object_reference/fsc_api_access_and_usage.htm
+
+- Grantmaking Developer Guide
+-- about: Streamline the grant management process for both funders and applicants. Built on the Salesforce platform, Nonprofit Cloud for Grantmaking includes everything you need to give grants and manage your budgets.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.nonprofit_cloud_for_grantmaking_dev_guide.meta/nonprofit_cloud_for_grantmaking_dev_guide/npc_introduction_to_nonprofit_cloud_for_grantmaking.htm
+
+- GraphQL API
+-- about: Aggregate records, request explicit fields, version at field-level, and more with GraphQL API for Salesforce. GraphQL API is a new paradigm of sending and receiving data.
+-- url: https://developer.salesforce.com/docs/platform/graphql/overview
+
+- Heroku Docs
+-- about: Learn about building, deploying, and managing your apps on Heroku.
+-- url: https://devcenter.heroku.com/
+
+- Heroku Platform API
+-- about: Automate, extend, and combine Heroku with other services. Create apps, provision add-ons, and more.
+-- url: https://devcenter.heroku.com/categories/platform-api
+
+- ISVforce Guide: Build and Distribute AppExchange Solutions
+-- about: Learn to plan, build, distribute, sell, and support solutions for the AppExchange marketplace.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/packaging_intro.htm
+
+- Industries Common Resources Developer Guide
+-- about: Certain feature sets are shared across industries. This guide contains developer documentation to help you put those features to work including: AI Accelerator and Scoring Framework,Action Launcher,Actionable List Members,Actionable Segmentation,Business Rules Engine,Collections and Recovery,Context Service,Criteria-Based Search and Filter,Data Processing Engine,Omnistudio Business APIs,Outcome Management,Outreach List,Record Alerts,Record Rollup Definitions,Scheduled Reminders,Sentiment Insights,Service Process Studio,Timeline, and Virtual Calls
+-- url: https://developer.salesforce.com/docs/atlas.en-us.industries_reference.meta/industries_reference/salesforce_industries_dev_guide.htm
+
+- Insurance Developer Guide
+-- about: Use the developer resources of Insurance Cloud to manage end-to-end insurance processes. Create and configure quotes, manage policy transactions, and automate processes related to brokerage policies and commissions.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.insurance_developer_guide.meta/insurance_developer_guide/insurance_dev_guide.htm
+
+- Integration Patterns and Practices
+-- about: When you implement Salesforce, you frequently need to integrate it with other applications. Although each integration scenario is unique, there are common requirements and issues that developers must resolve. This document describes strategies (in the form of patterns) for these common integration scenarios. Each pattern describes the design and approach for a particular scenario rather than a specific implementation.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.integration_patterns_and_practices.meta/integration_patterns_and_practices/integ_pat_intro_overview.htm
+
+- Interaction Service API
+-- about: Automate and customize the Bring Your Own Channel experience for your reps using Interaction Service APIs. Display inbound messages, file attachments, and typing indicators directly in the Service Console for your reps to view in real time. Notify reps when messages are delivered or read, display historical conversation entries, and add support for custom objects. For Bring Your Own Channel for CCaaS systems, configure partner-owned routing, and track the routing status of those conversations.
+-- url: https://developer.salesforce.com/docs/service/interaction-service-api/overview
+
+- LWR (Lighting Web Runtime) Sites for Experience Cloud
+-- about: Develop sites that load quickly and scale well using the Build Your Own (LWR) and Microsite (LWR) templates for Experience Cloud. Based on the Lightning Web Runtime (LWR) and the Lightning Web Components (LWC) programming model, these lightweight templates support fully custom solutions and deliver exceptional site performance.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/intro.htm
+
+- Life Sciences Cloud Developer Guide
+-- about: Life Sciences Cloud is an end-to-end, purpose-built platform for the life sciences industry spanning clinical to medical to commercial domains. This guide includes the available developer resources for Life Sciences Cloud.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.life_sciences_dev_guide.meta/life_sciences_dev_guide/life_sciences_cloud_overview.htm
+
+- Life Sciences Cloud Integrations API
+-- about: Integrate Life Sciences Cloud applications with other external systems to realize end-to-end business processes by using industry-specific APIs and integration assets.
+-- url: https://developer.salesforce.com/docs/industries/lifesciences/overview
+
+- Lightning Components Library
+-- about: a catalog of pre-created Lightning Web Components
+-- url: https://developer.salesforce.com/docs/component-library/overview/components
+
+- Lightning Web Components Developer Guide
+-- about: Use the Lightning Web Components (LWC) framework to build custom user interfaces, web and mobile apps, and digital experiences on the Salesforce Platform. Lightning web components are custom HTML elements built using HTML and JavaScript.
+-- url: https://developer.salesforce.com/docs/platform/lwc/guide
+
+- Lightning Flow for Service Developer Guide
+-- about: Give your users a list of logical next steps with Salesforce Flow for Service and the Actions & Recommendations component. To create the list, associate actions with a record page using an Actions & Recommendations deployment, Salesforce automation tools, or API. You can configure default actions for specific channels, like phone or chat, and select the actions that you want users to complete first and last.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_guided_engagement.meta/salesforce_guided_engagement/salesforce_guided_engagement.htm
+
+- Lightning Web Components Developer Guide
+-- about: Lightning Web Components (LWC) is a framework for creating modern user interfaces on the web, mobile apps, and digital experiences on the Salesforce Platform. With LWC, developers can use W3C web standards to build custom HTML elements with JavaScript and HTML, applying foundational concepts like HTML templates and shadow DOM while working seamlessly with Salesforce data. LWC is backwards compatible with Aura components; they can coexist and interoperate on a page.
+-- url: https://developer.salesforce.com/docs/platform/lwc/overview
+
+- Lightning Web Components in CRM Analytics Dashboards
+-- about: With Lightning Web Components in dashboards, you can now extend CRM Analytics functionality with your own custom widgets.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.bi_dev_guide_lwc_in_db.meta/bi_dev_guide_lwc_in_db/bi_lwc_in_db_overview.htm
+
+- Lightning Web Runtime
+-- about: Lightning Web Runtime (LWR) enables you to build digital experiences that meet the high scale, security, and performance demands of modern web applications. LWR at its simplest is a non-opinionated way to configure and load the modules, services, and dependency providers you need to build a JavaScript app. You can deploy on a variety of runtime environments, depending on your use case. For example, LWR works in a local Node.js runtime, or as a standalone instance in Heroku.
+-- url: https://developer.salesforce.com/docs/platform/lwr/overview
+
+- Loyalty Management Developer Guide
+-- about: Loyalty Management data model provides objects and fields to create and manage loyalty programs for your organization. Use the objects to manage partners and members, track members' activities, reward members, and manage promotions.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.loyalty.meta/loyalty/loyalty_api_overview.htm
+
+- Loyalty Management Integrations API
+-- about: Integrate Loyalty Management with a point of sale (POS) system and enhance customer engagement, increase sales, and foster customer loyalty. Use the Retail POS APIs to get member profile details, enroll individual members in a loyalty program, manage vouchers, and create accrual and redemption orders. You can use these APIs to integrate with in-store as well as e-commerce solutions. Use the Restaurant POS APIs to get guest details, retrieve vouchers, and create accrual and redemption orders.
+-- url: https://developer.salesforce.com/docs/industries/loyalty/overview
+
+- Manufacturing Cloud Developer Guide
+-- about: Manufacturing Cloud data model provides objects and fields to create and manage sales agreements and account forecasts. Use the objects for business negotiations and planning, and get an integrated sales experience.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.mfg_api_devguide.meta/mfg_api_devguide/mfg_api_overview.htm
+
+- Manufacturing Cloud Integrations API
+-- about: Integrate Manufacturing Cloud applications with other external systems to realize end-to-end business processes by using industry-specific APIs and integration assets.
+-- url: https://developer.salesforce.com/docs/industries/manufacturing/overview
+
+- Marketing Cloud Engagement Overview
+-- about: Manage your marketing contacts, campaigns, and content with Marketing Cloud Growth and Advanced Editions. Use Salesforce Platform and Data Cloud APIs to ingest contacts, manage segments and campaigns, upload message content, and more. Create content, manage contacts and data, and monitor your customer journeys. Trigger automated multichannel messages. Create personalized messages that provide an experience tailored to each customer.
+-- url: https://developer.salesforce.com/docs/marketing/marketing-cloud-growth/overview
+
+- Marketing Cloud Engagement APIs and Programmatic Languages
+-- about: Automate your marketing processes and extend Marketing Cloud Engagement. Create API integrations, build custom apps and Journey Builder components, send triggered emails, manage contacts, create assets for Content Builder, and more.
+-- url: https://developer.salesforce.com/docs/marketing/marketing-cloud/overview
+
+- Marketing Cloud Personalization Guide
+-- about: Deliver relevant, individualized experiences to customers and prospects in real time at key moments in their journeys across web, social, and mobile channels. Integrate Marketing Cloud Personalization with your company's systems to gain a comprehensive view of each customer and prospect. Develop behavioral analytics, and use machine learning capabilities based on interaction data.
+-- url: https://developer.salesforce.com/docs/marketing/personalization/overview
+
+- Media Cloud Developer Guide
+-- about: Salesforce Industries Media Cloud provides modules and application components that are built on the Salesforce platform and products. Use the Media application suite to set up a platform to address customer requirements through community self-service interfaces or an agent console. Salesforce Industries Media applications deliver key, commonly used business processes that you can configure and use as-is, or extend and integrate with other third-party applications.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.media_developer_guide.meta/media_developer_guide/media_industries_dev_guide.htm
+
+- Media Cloud AdTech Integrations API
+-- about: Media Cloud Integrations API are based on REST to standardize, facilitate interoperability, and achieve open digital architectures. Integrate Media Cloud apps with external ad tech systems to realise various end-to-end business processes.
+-- url: https://developer.salesforce.com/docs/industries/media-cloud/overview
+
+- Service Cloud Messaging Object Model
+-- about: This guide describes the Messaging object model for both in-app and web integrations
+-- url: https://developer.salesforce.com/docs/service/messaging-object-model/guide/overview.html
+
+- Messaging for In-App
+-- about: With Messaging for In-App, you can provide a modern messaging experience directly from your mobile app. Use the Messaging for In-App SDKs, and take full advantage of the security and scalability of Hyperforce, to deliver an enhanced experience from your existing iOS and Android mobile apps. Customers stay in your intentionally designed user experience and connect with support reps from within your app. They can hop in and out of the conversation while their message details persist between sessions. With custom branding, enhanced bot support, mobile push notifications, file attachments, and more, you can provide a compelling messaging experience.
+-- url: https://developer.salesforce.com/docs/service/messaging-in-app/overview
+
+- Messaging for In-App and Web API
+-- about: The Messaging for In-App and Web API allows you to programmatically manage customer conversations made through mobile apps or websites through a custom client deployment. While our web or mobile deployments rely on our web client and mobile SDK, you can use the Messaging for In-App and Web REST API with a custom client deployment to deliver a highly customized UI. Use this REST API to create conversations that house messaging sessions, generate access tokens, and send messages and files. You can also integrate an external bot solution or partner-supported messaging solutions.
+-- url: https://developer.salesforce.com/docs/service/messaging-api/overview
+
+- Messaging for Web
+-- about: With Messaging for Web, you can provide a modern messaging experience directly from your website. This guide provides you with information about the Messaging for Web APIs that can enhance conversations with your customers.
+-- url: https://developer.salesforce.com/docs/service/messaging-web/overview
+
+- Metadata API Developer Guide
+-- about: The main purpose of Metadata API is to move metadata between Salesforce orgs during the development process. Use Metadata API to deploy, retrieve, create, update, or delete customization information, such as custom object definitions and page layouts. Metadata API doesn’t work directly with business data. To create, retrieve, update, or delete records such as accounts or leads, use SOAP API or REST API.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_intro.htm
+
+- Mobile SDK Development Guide
+-- about: Harness the power of Salesforce Platform within stand-alone mobile apps. Unlike a desktop app, a Mobile SDK app accesses Salesforce data through a mobile device’s native operating system rather than through a browser. Before you dive into Mobile SDK, take a look at how mobile development works, and learn about essential Salesforce developer resources.
+-- url: https://developer.salesforce.com/docs/platform/mobile-sdk/overview
+
+- Mobile and Offline Developer Guide
+-- about: Customize Salesforce mobile apps with features built with Lightning web components, and deploy your customizations to mobile users. Create components and apps that work even when mobile devices are offline while in the field. Optimize your features to handle low- and no-network connectivity situations with grace.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.mobile_offline.meta/mobile_offline/intro.htm
+
+- MobilePush SDK
+-- about: Engage with your audiences through timely, targeted, and personalized mobile app messages. Craft and send push notifications, inbox messages, and in-app messages that are personalized to individual users, increasing engagement and desired actions. Leverage geofencing and beacon technology to deliver context-aware messages based on users' physical locations, enhancing relevance and impact.
+-- url: https://developer.salesforce.com/docs/marketing/mobilepush/overview
+
+- Net Zero Cloud Developer Guide
+-- about: Gain critical insights into your environmental, social, and governance data by using Salesforce Net Zero Cloud. Net Zero Cloud facilitates collaboration, project management, and reporting by harnessing the capabilities offered by the Salesforce Platform-based tools.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.netzero_cloud_dev_guide.meta/netzero_cloud_dev_guide/netzero_cloud_std_objects_intro.htm
+
+- Nonprofit Cloud Developer Guide
+-- about: Use Nonprofit Cloud to fund, deliver, and measure impact with one integrated platform. Nurture your most important relationships, and break down silos between teams with a single source of truth about your donors, stakeholders, and constituents.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.nonprofit_cloud.meta/nonprofit_cloud/npc_intro.htm
+
+- Object Reference for the Salesforce Platform
+-- about: This document describes all of the objects available in the Salesforce API. Get details on standard objects to interface with Salesforce data
+-- url: https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_concepts.htm
+
+- Omni-Channel Developer Guide
+-- about: Customize your Omni-Channel records and console integration with Omni-Channel API objects and console methods. Omni-Channel routes work items to queues, agents, skills, and even Einstein Bots (on supported channels) based on defined routing logic. Depending on your business needs, you can use different ways to route work, including Omni-Channel flows.
+
+- Open CTI Developer Guide
+-- about: Build and integrate third-party computer-telephony integration (CTI) systems with Salesforce Call Center using a browser-based JavaScript API.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.api_cti.meta/api_cti/sforce_api_cti_intro.htm
+
+- Order Management SDK
+-- about: Use the SDK to help you understand how classes and objects work in Order Management Plus integration.
+-- url: https://developer.salesforce.com/docs/industries/order-management/overview
+
+- Platform Encryption REST API Developer Guide
+-- about: The Salesforce Shield Platform Encryption API enables you to "bring your own key" (BYOK)—that is, to control your own tenant secrets on your own premises. Use the POST, GET, and PUT operations to create your tenant secrets, import them into Salesforce, and rotate them as needed. The Encryption REST API is available in API versions 38.0 and later.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.platform_encryption_rest_api_guide.meta/platform_encryption_rest_api_guide/api_rest_encryption.htm
+
+- Platform Events Developer Guide
+-- about: Use platform events to connect business processes in Salesforce and external apps through the exchange of real-time event data. Platform events are secure and scalable messages that contain data. Publishers publish event messages that subscribers receive in real time. To customize the data published, define platform event fields.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_intro.htm
+
+- Pub/Sub API
+-- about: Pub/Sub API provides a single interface for publishing and subscribing to platform events, including real-time event monitoring events, and change data capture events. Based on gRPC and HTTP/2, Pub/Sub API efficiently publishes and delivers binary event messages in the Apache Avro format.
+-- url: https://developer.salesforce.com/docs/platform/pub-sub-api/overview
+
+- Public Sector Solutions Developer Guide
+-- about: Public Sector Solutions uses a suite of standard Salesforce objects to structure and store data related to licensing and permitting, inspections and assessments, case and program management, benefit management, grantmaking, and other features.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.psc_api.meta/psc_api/psc_data_models_overview.htm
+
+- Publisher and Quick Action Developer Guide
+-- about: Create custom components to interact with the actions on pages in Salesforce Classic and Lightning Experience apps. Using Aura components, Visualforce, and Apex, you can customize your app’s experience, including the case feed. For example, you can use a custom component to let users send an email with a Knowledge article.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.case_feed_dev.meta/case_feed_dev/case_feed_dev_guide_intro.htm
+
+- REST API Developer Guide
+-- about: REST API provides you with programmatic access to your data in Salesforce. The flexibility and scalability of REST API make it an excellent choice for integrating Salesforce into your applications and for performing complex operations on a large scale. Salesforce REST API is designed to work with Salesforce objects. See the Object Reference for the Salesforce Platform for an introduction and more information about Salesforce objects.
+
+- Rebate Management Developer Guide
+-- about: Rebate Management data model provides objects and fields to create and manage rebate programs and manage payouts and transactions. Use the objects to optimize the incentives offered to build a mutually profitable relationship with your partners.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.rebates_api_devguide.meta/rebates_api_devguide/rebates_api_overview.htm
+
+- Referral Marketing Developer Guide
+-- about: Referral Marketing enables marketing managers to create and manage referral programs for the company’s customers and their referrals. Developers in your company can use the resources provided in this guide to customize and extend the capabilities of Referral Marketing.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.referral_marketing.meta/referral_marketing/referral_intro.htm
+
+- Restriction Rules Developer Guide
+-- about: Restriction rules are a record-level access control mechanism that allows you to grant granular visibility to specified users. This guide outlines the different use cases of restriction rules and describes how to set them up using the Tooling or Metadata API.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.restriction_rules.meta/restriction_rules/restriction_rules_intro.htm
+
+- Revenue Cloud Developer Guide
+-- about: Use Revenue Cloud to automate the backend work to support the end-to-end revenue solution. Revenue Cloud provides extensible and API-first business components of the product-to-cash processes.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/rlm_get_started.htm
+
+- SOAP API Developer Guide
+-- about: Salesforce SOAP API is designed to work with Salesforce objects. See the Object Reference for the Salesforce Platform for an introduction and more information about Salesforce objects.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_quickstart_intro.htm
+
+- SOQL and SOSL Reference
+-- about: If you’ve built a custom UI for Salesforce, you can use the Salesforce Object Query Language (SOQL) and Salesforce Object Search Language (SOSL) APIs to search your organization’s Salesforce data. This guide explains when to use SOQL and SOSL and outlines the syntax, clauses, limits, and performance considerations for both languages. It is intended for developers and assumes knowledge and experience working with APIs to interact with data.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_sosl_intro.htm
+
+- SQL for Analytics Developer Guide
+-- about: SQL for CRM Analytics is a query language that lets you execute queries against your CRM Analytics datasets. SQL (Structured Query Language) is typically used for working with data stored in relational databases—you might already be familiar with variants like MySQL and PostGreSQL. CRM Analytics uses the ANSI SQL interface to access CRM Analytics’s fast in-memory data store. It has native support of Salesforce features used in CRM Analytics, including sharing inheritance and custom fiscal calendars.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.bi_dev_guide_sql.meta/bi_dev_guide_sql/bi_sql_intro.htm
+
+- Sales Engagement
+-- about: Accelerate your inside sales process with Sales Engagement. With cadences, managers can create custom sales playbooks that guide sales reps through a defined series of sales steps, including emails, calls, LinkedIn messages, and more. Use the API to understand your cadences, their assigned targets, and revenue associated with them. The High Velocity Sales name has changed to Sales Engagement. The automation features within the product now include customer engagement tracking, chat bots, and cadences.
+-- url: https://developer.salesforce.com/docs/sales/sales-engagement/overview
+
+- Salesforce Analytics Plugin CLI Command Reference
+-- about: The command reference contains information about the Salesforce CLI commands for the Analytics plugin and their flags. The sf section contains information about the sf-style commands, which became generally available in July 2023. The sfdx section contains information about the sfdx-style commands, which are deprecated. We no longer maintain the sfdx information and keep it in this guide for historical reference only.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.bi_dev_guide_cli_reference.meta/bi_dev_guide_cli_reference/bi_cli_reference.htm
+
+- Salesforce Billing Developer Guide
+-- about: Salesforce Billing has added custom fields to some standard Salesforce objects to represent information specific to billing. These fields are available only in orgs where the Salesforce Billing managed package is installed.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.blng_dev.meta/blng_dev/blng_standard_objects_parent.htm
+
+- Salesforce CPQ Developer Guide
+-- about: Salesforce CPQ API and plugin documentation
+-- url: https://developer.salesforce.com/docs/atlas.en-us.cpq_dev_api.meta/cpq_dev_api/cpq_developer_guide_intro.htm
+
+- Salesforce CPQ Plugins
+-- about: Salesforce CPQ plugins let you add customized functionality to features within the Salesforce CPQ package.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.cpq_plugins.meta/cpq_plugins/cpq_plugins_parent.htm
+
+- B2B Commerce and B2C/D2C Commerce Developer Guide
+-- about: Develop a B2B Commerce or D2C Commerce solution leveraging Lightning Experience capabilities. Design the platform to align with your business needs and seamlessly integrate with all third-party applications. Tailor a Salesforce Commerce store to your unique business needs by implementing B2B and D2C Commerce APIs and extensions. Explore integration points for B2B and D2C Commerce, especially within the cart and checkout experience.
+-- url: https://developer.salesforce.com/docs/commerce/salesforce-commerce/overview
+
+- Salesforce Commerce Plug-In CLI Command Reference
+-- about: The command reference contains information about the Salesforce CLI commands for the Commerce plug-in and their parameters. 
+-- url: https://developer.salesforce.com/docs/atlas.en-us.comm_cli_reference.meta/comm_cli_reference/comm_cli_reference.htm
+
+- Salesforce Console Developer Guide
+-- about: The Lightning Console JavaScript API and the Salesforce Console Integration Toolkit both interact with Salesforce console apps. This guide provides reference material for both. Learn how to extend, customize, and integrate the Salesforce console with a Javascript API
+-- url: https://developer.salesforce.com/docs/atlas.en-us.api_console.meta/api_console/sforce_api_console.htm
+
+- Salesforce Contracts
+-- about: Salesforce Contracts is a next-generation Contract Lifecycle Management (CLM) application that enables businesses to efficiently and collaboratively manage their contracts, right from authoring and negotiations through approval and execution. Documents, data, and life cycles of multiple types of contracts can be managed centrally in Salesforce, providing organizations complete visibility into their contracting activities. Salesforce Contracts provides a highly usable, configurable, and extensible contracting platform that can be integrated with industry specific use cases. Salesforce Contracts functionality is centered around the "Contract" object of Salesforce, which is enriched and extended to support this new application.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.clm_developer_guide.meta/clm_developer_guide/clm_intro.htm
+
+- Salesforce DX Developer Guide
+-- about: Salesforce DX tooling provides modern experience to manage and develop apps on the platform across their entire lifecycle. It brings together source-driven development, team collaboration with governance, and new levels of agility for custom app development on Salesforce based on modern best practices.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm
+
+- Salesforce Feedback Management Developer Guide
+-- about: Gather customer feedback and gain deeper insights about your products or services through Surveys. Salesforce Feedback Management (SFM) gives you the tools and developer resources to create engaging, personalized surveys. The developer resources include Connect REST APIs to build surveys, Apex classes to send survey invitations, and REST APIs to translate surveys.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_feedback_management_dev_guide.meta/salesforce_feedback_management_dev_guide/salesforce_feedback_management_intro.htm
+
+- Salesforce Field Reference Guide
+-- about: This guide lists important details for standard objects in Salesforce. All the fields (except the standard System fields such Id, IsDeleted, LastModifedDate, etc., which are described in System Fields in the Object Reference).
+-- url: https://developer.salesforce.com/docs/atlas.en-us.sfFieldRef.meta/sfFieldRef/salesforce_field_reference.htm
+
+- Salesforce Functions
+-- about: Extend the Salesforce Platform with custom, elastically scalable business logic. Salesforce Functions is designed to boost developer productivity by reducing your infrastructure responsibilities and enabling you to build and integrate Functions-as-a-Service (FaaS) apps using the languages and tools of your choice.
+-- url: https://developer.salesforce.com/docs/platform/functions/overview
+
+- Salesforce Health Cloud Developer Guide
+-- about: This guide provides information on the custom objects used by Health Cloud and their fields.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.health_cloud_object_reference.meta/health_cloud_object_reference/object_ref_overview.htm
+
+- Salesforce Healthcare API
+-- about: Use Salesforce Healthcare API to securely connect and interact with a system that uses FHIR APIs. The Fast Health Interoperability Resources (FHIR) standard defined by Health Level Seven (HL7) enables healthcare systems to work together seamlessly. Transforming data to FHIR allows you to quickly connect data sources like electronic medical record (EMR) systems and research databases. FHIR also enables rapid data exchange in mobile and web apps.
+-- url: https://developer.salesforce.com/docs/industries/health/overview
+
+- Salesforce Knowledge Developer Guide
+-- about: Salesforce Knowledge gives your website visitors, clients, partners, and service agents the ultimate in support. You can create and manage your company information and securely share it when and where it is needed. Most features are declarative and let you point-and-click your way to a successful implementation. However, the API allows you to code your way to case deflection, happier customers, and more productive support agents. This guide discusses both Lightning Knowledge and Knowledge in Salesforce Classic.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.knowledge_dev.meta/knowledge_dev/knowledge_development_intro.htm
+
+- Salesforce Maps Apex Developer Guide
+-- about: Get your sales and service teams to spend more time building customer relationships and less time on the road when you fine-tune your Salesforce Maps implementation using Apex. For example, return estimated travel distances and times between locations, get geographical coordinates for addresses, and retrieve geometric data for areas and perimeters.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.maps_developer_guide.meta/maps_developer_guide/maps_overview.htm
+
+- Salesforce Mobile Notifications Implementation Guide
+-- about: Mobile notifications on Lightning Platform allow mobile app developers to notify their customers when business events occur in customers’ orgs. Salesforce provides considerable flexibility for using mobile notifications. You can push notifications to devices or deliver them within an app.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.pushImplGuide.meta/pushImplGuide/pns_overview.htm
+
+- Salesforce Personalization
+-- about: Personalization is a Customer 360 application that works with Data Cloud to provide AI-based personalized experiences, like recommendations or customized content, to users or site visitors.
+-- url: https://developer.salesforce.com/docs/marketing/einstein-personalization/overview
+
+- Salesforce Reports and Dashboards REST API Developer Guide
+-- about: The Reports and Dashboards REST API gives you programmatic access to your report and dashboard data as defined in the report builder and dashboard builder. The API lets you integrate the data into any web or mobile application, inside or outside the Salesforce platform.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.api_analytics.meta/api_analytics/sforce_analytics_rest_api_intro.htm
+
+- Salesforce Scheduler Developer Guide
+-- about: Salesforce Scheduler (formerly known as Lightning Scheduler) gives you the tools and developer resources you need to simplify appointment scheduling in Salesforce. Create a personalized experience by scheduling customer appointments—in person, or by phone or video—with the right person at the right place and time.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_scheduler_developer_guide.meta/salesforce_scheduler_developer_guide/salesforce_scheduler_intro.htm
+
+- Salesforce Security Guide
+-- about: Salesforce is built with security to protect your data and applications. You can also implement your own security scheme to reflect the structure and needs of your organization. Protecting your data is a joint responsibility between you and Salesforce. The Salesforce security features enable you to empower your users to do their jobs safely and efficiently.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm
+
+- Subscription Management
+-- about: Automate the back-end revenue work needed to sell, invoice, and recognize revenue from subscription products. Subscription Management provides a REST API and standard Salesforce objects that automate the often repetitive back-end work needed to support self-service subscriptions. Use the headless Subscription Management API to integrate Salesforce data with the front end of your choice. The API supports common use cases for managing recurring subscription sales, such as calculating prices and price adjustments, implementing a Buy Now experience, canceling and renewing a subscription, and handling billing.
+-- url: https://developer.salesforce.com/docs/revenue/subscription-management/overview
+
+- Second-Generation Managed Packaging Developer Guide
+-- about: Second-generation managed packaging (managed 2GP) ushers in a new way for AppExchange partners to develop, distribute, and manage their apps and metadata. You can use managed 2GP packaging to organize your source, build small modular packages, integrate with your version control system, and better utilize your custom Apex code. With version control being the source of truth, there are no packaging or patch orgs. You can execute all packaging operations via Salesforce CLI, or automate them using scripts. Submit second-generation managed packages for security review, and list them on AppExchange.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp.htm
+
+- Secure Coding Guidelines
+-- about: This guide walks you through the most common security issues Salesforce has identified while auditing applications built on or integrated with the Lightning Platform.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_guidelines.htm
+
+- Service Cloud Connector API Reference
+-- about: The Connector API is the interface between your partner telephony or Contact Center as a Service (CCaaS) system and your Salesforce org. This API allows you to pass information to Salesforce and to receive events back from Salesforce.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.service_connector_api_developer_guide.meta/service_connector_api_developer_guide/service_connector_api_overview.htm
+
+- Service Cloud Voice Implementation Guide
+-- about: This guide describes how a technical admin or a developer can fine-tune their Service Cloud Voice implementation after it is set up. It includes examples for implementing common use cases. It explains how to use contact flows, Lambda functions, the Telephony Integration REST API, the Connect API, and the Voice Toolkit API to extend the functionality. It also explains how Voice scales during periods of high call volumes.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.voice_developer_guide.meta/voice_developer_guide/voice_intro.htm
+
+- Tooling API
+-- about: Use Tooling API to build custom development tools or apps for Lightning Platform applications. Tooling API’s SOQL capabilities for many metadata types allow you to retrieve smaller pieces of metadata. Smaller retrieves improve performance, which makes Tooling API a better fit for developing interactive applications.Tooling API provides SOAP and REST interfaces. For example, you can: Add features and functionality to your existing Lightning Platform tools; Build dynamic modules for Lightning Platform development into your enterprise integration tools; Build specialized development tools for a specific application or service.
+
+- User Interface API Developer Guide
+-- about: Build Salesforce UI for native mobile apps and custom web apps using the same API that Salesforce uses to build Lightning Experience and Salesforce for Android, iOS, and mobile web. Build user interfaces that let users work with records, list views, actions, favorites, and more. Not only do you get data and metadata in a single response, but the response matches metadata changes made to the org by Salesforce admins. You don’t have to worry about layouts, picklists, field-level security, or sharing—all you have to do is build an app that users love.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+
+- Using Date, Date/Time, and Time Values in Formulas
+-- about: Date formulas are useful for managing payment deadlines, contract ages, or any other features of your organization that are time or date dependent.
+-- url: https://help.salesforce.com/s/articleView?id=platform.formula_using_date_datetime.htm&type=5
+
+- Visualforce Developer Guide
+-- about: Visualforce consists of a tag-based markup language that gives developers way to build applications and customize the Salesforce user interface. With Visualforce, you can: Build wizards and other multistep processes; Create a custom flow control through an application; Define navigation patterns and data-specific rules for optimal, efficient application interaction;
+-- url: https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/pages_intro.htm
+
+- Work.com Developer Guide
+-- about: Build custom solutions for Work.com, including Workplace Command Center, Wellness Check, Shift Management, Employee Workspace and more, to help businesses respond to a major event, adopt wide-scale compliance, implement an auditing system, or other workplace operations.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.workdotcom_dev_guide.meta/workdotcom_dev_guide/wdc_cc_overview.htm
+
+- Workforce Engagement Developer Guide
+-- about: Get ready to fine-tune or extend your Workforce Engagement implementation. This guide introduces developers and technical admins to concepts and data in Workforce Engagement features: workload histories, intelligent forecasts, capacity plans, and shift creation and scheduling.
+-- url: https://developer.salesforce.com/docs/atlas.en-us.workforce_engagement.meta/workforce_engagement/wem_cookbook_intro.htm
+
+- Tableau REST API
+-- about: Create custom applications and script interactions with Tableau (Business Intelligence)
+-- url: https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api.htm

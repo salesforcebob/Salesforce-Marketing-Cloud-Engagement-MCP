@@ -1,0 +1,55 @@
+---
+description: Reference this documentation for standards on designing and developing MCP servers 
+alwaysApply: false
+---
+
+Model Context Protocol (MCP) Documentation:
+https://modelcontextprotocol.io/docs/getting-started/intro
+
+Model Context Protocol Lifecycle:
+https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle
+
+Model Context Protocol Specification:
+https://modelcontextprotocol.io/specification/2025-06-18
+
+Model Context Protocol Schema Reference:
+https://modelcontextprotocol.io/specification/2025-06-18/schema
+
+Model Context Protocol Security Best Practices:
+https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices
+
+Model Context Protocol Authorization:
+https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization
+
+Model Context Protocol SDKs:
+https://modelcontextprotocol.io/docs/sdk
+
+Model Context Protocol Architecture:
+https://modelcontextprotocol.io/docs/learn/architecture
+
+Model Context Protocol Server Concepts:
+https://modelcontextprotocol.io/docs/learn/server-concepts
+
+Model Context Protocol Client Concepts:
+https://modelcontextprotocol.io/docs/learn/client-concepts
+
+Model Context Protocol Versioning Best Practices:
+https://modelcontextprotocol.io/specification/versioning
+
+Guide: Using Model Context Protocol - Connect to Remote Servers:
+https://modelcontextprotocol.io/docs/tutorials/use-remote-mcp-server
+
+Guide: Using Model Context Protocol - Connect to Remote Servers:
+https://modelcontextprotocol.io/quickstart/user
+
+Guide: Build a Model Context Protocol Server: 
+https://modelcontextprotocol.io/quickstart/server
+
+Guide: Using the MCP Inspector for testing and debugging Model Context Protocol servers:
+https://modelcontextprotocol.io/legacy/tools/inspector
+
+Guide: Build a Model Context Protocol Client:
+https://modelcontextprotocol.io/quickstart/client
+
+Library: Extensive list of open source MCP Servers for reference:
+https://github.com/modelcontextprotocol/servers
