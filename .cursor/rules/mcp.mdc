@@ -1,0 +1,9 @@
+---
+description: MCP Tools available for you to execute within connected systems
+globs:
+alwaysApply: true
+---
+
+Marketing Cloud Engagement: 
+
+- Use your marketing_cloud_engagement MCP tool (mcpServers) to manage Marketing Cloud Engagement programmatically when required to read/create/update/delete/execute. Refer to documentation_resources.mdc for links to Marketing Cloud Engagement API documentation to understand how to make effective API calls across the Marketing Cloud Enagement REST & SOAP APIs.

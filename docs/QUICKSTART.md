@@ -24,6 +24,15 @@ export MCE_DEV_SUBDOMAIN=your_subdomain
 export MCE_DEV_ACCOUNT_ID=your_mid   # optional
 ```
 
+### Run via npx (no local checkout required)
+```
+npx mce-mcp serve
+```
+Or with pnpm dlx:
+```
+pnpm dlx mce-mcp serve
+```
+
 ### Run in dev
 ```
 pnpm dev

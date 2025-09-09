@@ -34,6 +34,15 @@ export MCE_DEV_SUBDOMAIN=your_subdomain
 export MCE_DEV_ACCOUNT_ID=your_mid
 ```
 
+### Run via npx (recommended)
+```
+npx mce-mcp serve
+```
+Or install globally:
+```
+pnpm dlx mce-mcp serve
+```
+
 ### Run locally (stdio)
 ```
 pnpm dev
@@ -43,7 +52,7 @@ This starts an MCP stdio server. Use it with MCP-compatible clients.
 ## Using with Cursor
 1. Open Cursor settings → MCP/Servers.
 2. Add a new stdio server command:
-   - Command: `pnpm dev`
+   - Command: `npx mce-mcp serve`
    - Working directory: this repo
 3. Save and reload tools. You should see tools:
    - `mce.v1.health`
