@@ -1,5 +1,5 @@
 {
-  "name": "salesforce-marketing-cloud-engagement-mcp",
+  "name": "@salesforcebob/salesforce-marketing-cloud-engagement-mcp",
   "version": "0.1.0",
   "private": false,
   "type": "module",

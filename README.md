@@ -36,11 +36,11 @@ export MCE_DEV_ACCOUNT_ID=your_mid
 
 ### Run via npx (recommended)
 ```
-npx mce-mcp serve
+npx @salesforcebob/salesforce-marketing-cloud-engagement-mcp serve
 ```
-Or install globally:
+Or with pnpm dlx:
 ```
-pnpm dlx mce-mcp serve
+pnpm dlx @salesforcebob/salesforce-marketing-cloud-engagement-mcp serve
 ```
 
 ### Run locally (stdio)
@@ -52,7 +52,7 @@ This starts an MCP stdio server. Use it with MCP-compatible clients.
 ## Using with Cursor
 1. Open Cursor settings → MCP/Servers.
 2. Add a new stdio server command:
-   - Command: `npx mce-mcp serve`
+   - Command: `npx @salesforcebob/salesforce-marketing-cloud-engagement-mcp serve`
    - Working directory: this repo
 3. Save and reload tools. You should see tools:
    - `mce.v1.health`
