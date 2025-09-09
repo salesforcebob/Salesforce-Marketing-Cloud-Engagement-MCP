@@ -2,11 +2,12 @@ import { z } from "zod";
 import { AuthManager } from "../../core/auth.js";
 import { AppConfig, getActiveProfile, loadConfigFromEnv } from "../../core/config.js";
 import { HttpClient } from "../../core/http.js";
+import { XMLParser } from "fast-xml-parser";
 
 export const soapRequestInputSchema = z.object({
   action: z.enum(["Create", "Retrieve", "Update", "Delete", "Perform", "Configure"]).describe("SOAP action"),
   objectType: z.string().describe("SOAP object type, e.g., DataExtensionObject"),
-  properties: z.record(z.any()).optional(),
+  properties: z.union([z.array(z.string()), z.record(z.any())]).optional(),
   filter: z.any().optional(),
   options: z.record(z.any()).optional(),
   payloadRawXml: z.string().optional().describe("Optional raw XML payload to send as-is"),
@@ -40,11 +41,20 @@ function buildActionBody(input: SoapRequestInput): string {
   if (input.payloadRawXml) return input.payloadRawXml;
   switch (input.action) {
     case "Retrieve":
-      return `<RetrieveRequestMsg xmlns="${ns}">
-        <RetrieveRequest>
-          <ObjectType>${esc(input.objectType)}</ObjectType>
-        </RetrieveRequest>
-      </RetrieveRequestMsg>`;
+      {
+        const props: string[] = Array.isArray(input.properties)
+          ? (input.properties as string[])
+          : input.properties
+          ? Object.keys(input.properties as Record<string, unknown>)
+          : [];
+        const propsXml = props.map((p) => `<Properties>${esc(p)}</Properties>`).join("");
+        return `<RetrieveRequestMsg xmlns="${ns}">
+          <RetrieveRequest>
+            <ObjectType>${esc(input.objectType)}</ObjectType>
+            ${propsXml}
+          </RetrieveRequest>
+        </RetrieveRequestMsg>`;
+      }
     case "Create":
       return `<CreateRequest xmlns="${ns}">
         <Objects xsi:type="${esc(input.objectType)}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></Objects>
@@ -75,7 +85,27 @@ export class MceSoapProvider {
       body: envelope,
     });
     const rawXml = await res.text();
-    return { status: res.status, rawXml };
+
+    // Parse minimal fields from SOAP response if possible
+    let overallStatus: string | undefined;
+    let requestId: string | undefined;
+    let results: any[] | undefined;
+    try {
+      const parser = new XMLParser({ ignoreAttributes: true, removeNSPrefix: true });
+      const parsed = parser.parse(rawXml);
+      const body = parsed?.Envelope?.Body || parsed?.Body || parsed;
+      const resp = body?.RetrieveResponseMsg || body?.RetrieveResponse || body;
+      overallStatus = resp?.OverallStatus;
+      requestId = resp?.RequestID || resp?.RequestId;
+      let r = resp?.Results;
+      if (r) {
+        results = Array.isArray(r) ? r : [r];
+      }
+    } catch {
+      // swallow parse errors; rawXml remains available
+    }
+
+    return { status: res.status, overallStatus, requestId, results, rawXml };
   }
 }
 

@@ -1,21 +1,31 @@
 {
   "name": "mce-mcp",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "type": "module",
   "description": "Model Context Protocol (MCP) server for Salesforce Marketing Cloud Engagement (MCE)",
   "license": "Apache-2.0",
   "engines": {
     "node": ">=18.17"
   },
+  "bin": {
+    "mce-mcp": "dist/cli.js"
+  },
   "scripts": {
     "build": "tsup src/cli.ts --format esm --dts --clean --out-dir dist",
     "dev": "tsx src/cli.ts serve",
     "serve": "node dist/cli.js serve",
+    "prepublishOnly": "pnpm run build",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint . --ext .ts",
     "typecheck": "tsc --noEmit"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.4",
