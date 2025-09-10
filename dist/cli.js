@@ -475,6 +475,71 @@ async function createServer() {
       };
     }
   );
+  mcpServer.registerTool(
+    "mce_v1_documentation",
+    {
+      description: "Returns Marketing Cloud Engagement documentation links and how to use this MCP server (tools, BU scoping, examples).",
+      inputSchema: {},
+      outputSchema: { doc: z5.string() }
+    },
+    async () => {
+      const doc = [
+        "Marketing Cloud Engagement \u2014 Documentation & MCP Usage",
+        "",
+        "Authoritative MCE documentation (selected):",
+        "- Marketing Cloud Engagement APIs and Programmatic Languages: https://developer.salesforce.com/docs/marketing/marketing-cloud/overview",
+        "- Marketing Cloud Engagement Overview (Growth/Advanced): https://developer.salesforce.com/docs/marketing/marketing-cloud-growth/overview",
+        "- AMPScript for Marketing Cloud: https://developer.salesforce.com/docs/marketing/marketing-cloud-ampscript/overview",
+        "- Engagement Mobile SDK (MobilePush): https://developer.salesforce.com/docs/marketing/engagement-mobile-sdk/overview",
+        "- REST Auth \u2013 Get Access Token (BU scoping via account_id): https://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_auth?meta=getAccessToken",
+        "",
+        "Using this MCP server:",
+        "Tools (underscore-only):",
+        "- mce_v1_health: health check",
+        "- mce_v1_rest_request: generic REST request",
+        "- mce_v1_soap_request: generic SOAP request",
+        "- mce_v1_documentation: this documentation response",
+        "",
+        "REST tool input:",
+        "{ method, path, query?, headers?, body?, timeoutMs?, asAttachment?, raw?, profile?, businessUnitId? }",
+        "Notes:",
+        "- businessUnitId (MID) scopes the token using account_id as per REST auth docs.",
+        "- Base URL is resolved from the token (rest_instance_url). \u2018path\u2019 is appended, e.g., /data/v1/customobjects.",
+        "",
+        "REST examples:",
+        "1) Search Data Extensions in a BU:",
+        "  method=GET path=/data/v1/customobjects query={ $search: 'Happy Birthday Email', page:1, pageSize:25 } businessUnitId=<MID>",
+        "2) List journeys in a BU:",
+        "  method=GET path=/interaction/v1/interactions query={ page:1, pageSize:200 } businessUnitId=<MID>",
+        "3) Create HTML Email in Content Builder root:",
+        "  method=POST path=/asset/v1/content/assets businessUnitId=<MID> body={ name, customerKey, assetType:{id:208,name:'htmlemail'}, category:{id:<folderId>}, views:{subjectline:{content:'...'}, preheader:{content:'...'}, html:{content:'<html>...'}} }",
+        "  Tip: Find root Content Builder folder via GET /asset/v1/content/categories",
+        "",
+        "SOAP tool input:",
+        "{ action:'Retrieve'|'Create'|'Update'|'Delete'|'Perform'|'Configure', objectType, properties?, filter?, options?, payloadRawXml?, profile?, businessUnitId? }",
+        "Notes:",
+        "- businessUnitId acquires a BU-scoped token; when provided, the tool suppresses ClientIDs in the envelope to avoid mixed context.",
+        "- Alternatively, omit businessUnitId and pass options.clientIds:[<MID>] and/or options.queryAllAccounts:true to control context.",
+        "- Endpoint is normalized to /Service.asmx; SOAPAction headers are set.",
+        "",
+        "SOAP examples:",
+        "1) Retrieve DataFolder hierarchy for Email:",
+        "  action: 'Retrieve', objectType:'DataFolder', properties:['ID','Name','CustomerKey','ContentType','ParentFolder.ID','ParentFolder.Name'], filter:{ property:'ContentType', operator:'equals', value:'email' }, businessUnitId:<MID>",
+        "2) Retrieve a DataExtension by CustomerKey:",
+        "  action:'Retrieve', objectType:'DataExtension', properties:['Name','CustomerKey','CategoryID','IsSendable'], filter:{ property:'CustomerKey', operator:'equals', value:'Email_HappyBirthday' }, businessUnitId:<MID>",
+        "",
+        "Operational guidance:",
+        "- Prefer REST for assets and journeys; use SOAP for DataFolder and some retrieve-only objects.",
+        "- Paginate REST using page/pageSize. SOAP can return MoreDataAvailable with a ContinueRequest token; (basic flows supported).",
+        "- AssetType: htmlemail id=208. Category (folder) IDs via /asset/v1/content/categories.",
+        "- Always least-privilege your Installed Package."
+      ].join("\n");
+      return {
+        content: [{ type: "text", text: doc }],
+        structuredContent: { doc }
+      };
+    }
+  );
   await mcpServer.connect(transport);
 }
 
