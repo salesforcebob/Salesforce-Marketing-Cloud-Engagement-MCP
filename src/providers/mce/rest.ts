@@ -63,6 +63,8 @@ export class MceRestProvider {
     const headers = {
       Authorization: `Bearer ${token.access_token}`,
       "content-type": input.body ? "application/json" : undefined,
+      // If a BU is configured, pass the override header so REST routes to that BU
+      ...(profile.businessUnitId ? { "x-mc-override-usermid": String(profile.businessUnitId) } : {}),
       ...(input.headers || {}),
     } as Record<string, string>;
     if (!headers["content-type"]) delete headers["content-type"];

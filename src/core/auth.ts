@@ -20,7 +20,9 @@ export class AuthManager {
   constructor(private fetchImpl: typeof fetch = fetch) {}
 
   private key(profile: MceProfile) {
-    return profile.name;
+    // Include BU/Account context in cache key so tokens are distinct per context
+    const context = profile.businessUnitId || profile.accountId || "";
+    return `${profile.name}:${context}`;
   }
 
   private isExpired(token: TokenInfo): boolean {
@@ -45,9 +47,10 @@ export class AuthManager {
       grant_type: "client_credentials",
       client_id: profile.clientId,
       client_secret: profile.clientSecret,
-      account_id: profile.accountId,
+      // Prefer Business Unit MID when provided; falls back to top-level Account MID
+      account_id: profile.businessUnitId || profile.accountId,
     } as Record<string, unknown>;
-    if (!profile.accountId) delete body.account_id;
+    if (!profile.accountId && !profile.businessUnitId) delete body.account_id;
 
     const res = await this.fetchImpl(url, {
       method: "POST",

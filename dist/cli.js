@@ -136,7 +136,8 @@ var AuthManager = class {
   }
   tokens = /* @__PURE__ */ new Map();
   key(profile) {
-    return profile.name;
+    const context = profile.businessUnitId || profile.accountId || "";
+    return `${profile.name}:${context}`;
   }
   isExpired(token) {
     const now = Date.now();
@@ -157,9 +158,10 @@ var AuthManager = class {
       grant_type: "client_credentials",
       client_id: profile.clientId,
       client_secret: profile.clientSecret,
-      account_id: profile.accountId
+      // Prefer Business Unit MID when provided; falls back to top-level Account MID
+      account_id: profile.businessUnitId || profile.accountId
     };
-    if (!profile.accountId) delete body.account_id;
+    if (!profile.accountId && !profile.businessUnitId) delete body.account_id;
     const res = await this.fetchImpl(url, {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -220,6 +222,8 @@ var MceRestProvider = class {
     const headers = {
       Authorization: `Bearer ${token.access_token}`,
       "content-type": input.body ? "application/json" : void 0,
+      // If a BU is configured, pass the override header so REST routes to that BU
+      ...profile.businessUnitId ? { "x-mc-override-usermid": String(profile.businessUnitId) } : {},
       ...input.headers || {}
     };
     if (!headers["content-type"]) delete headers["content-type"];
