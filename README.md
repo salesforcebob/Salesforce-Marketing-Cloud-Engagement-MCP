@@ -55,21 +55,34 @@ This starts an MCP stdio server. Use it with MCP-compatible clients.
    - Command: `npx @salesforcebob/salesforce-marketing-cloud-engagement-mcp serve`
    - Working directory: this repo
 3. Save and reload tools. You should see tools:
-   - `mce.v1.health`
-   - `mce.v1.rest.request`
-   - `mce.v1.soap.request`
+   - `mce_v1_health`
+   - `mce_v1_rest_request`
+   - `mce_v1_soap_request`
 
-Example tool call (REST):
+Example tool call (REST — BU‑scoped):
 ```
 {
-  "tool": "mce.v1.rest.request",
+  "tool": "mce_v1_rest_request",
   "input": {
     "method": "GET",
-    "path": "/asset/v1/content/assets",
-    "query": { "$page": 1, "$pagesize": 5 }
+    "path": "/data/v1/customobjects",
+    "query": { "$search": "Happy Birthday Email", "page": 1, "pageSize": 25 },
+    "businessUnitId": "<MID>"
   }
 }
 ```
+
+### Things you can ask Cursor to do with this MCP
+- List Data Extensions in a BU: “List all Data Extensions in BU 523027277.”
+- Find a specific Data Extension: “Find the Data Extension named ‘Super Cool Data’ in BU 523027277.”
+- Get Data Extension fields: “Show the fields for the Data Extension with CustomerKey SCD1 in BU 523027277.”
+- Query DE folder hierarchy (SOAP): “Retrieve the Email folder hierarchy for BU 523027277.”
+- Create an HTML Email: “Create an HTML email named ‘testMCEMCP’ in the 'Tinker' BU with a Salesforce‑branded hero and CTA, save to Content Builder root.”
+- List Journeys: “List all journeys in the Tinker BU (MID 523027277).”
+- Publish content variations: “Duplicate the email ‘testMCEMCP’, name it ‘testMCEMCP‑v2’, set subject to ‘Trailblaze with AI’, and save it to a ‘Campaigns’ subfolder in BU 523027277.”
+- Retrieve Subscribers (SOAP): “SOAP retrieve Subscribers where Status = Active in BU 523027277.”
+- Get DE rows by filter: “Return up to 50 rows from ‘Email_HappyBirthday’ where EmailAddress ends with ‘@example.com’ in BU 523027277.”
+- Health check: “Ping the MCE server to verify it’s ready.”
 
 ## Using with Claude Code (Claude Desktop)
 1. Open Claude Desktop → Settings → MCP Servers.
@@ -84,12 +97,18 @@ Security notes:
 - Scope your Installed Package to least privilege.
 - Treat `.env` as sensitive; store secrets securely in production.
 
-## Available tools (initial)
-- `mce.v1.health` — health check
-- `mce.v1.rest.request` — generic REST request to MCE
-- `mce.v1.soap.request` — generic SOAP request to MCE
+## Available tools
+- `mce_v1_health` — health check
+- `mce_v1_rest_request` — generic REST request to MCE (supports BU scoping)
+- `mce_v1_soap_request` — generic SOAP request to MCE (supports BU scoping)
 - AMPScript: formatter/linter (local utilities)
 - SSJS: formatter/linter (local utilities)
+
+### Business Unit scoping
+- REST: supply `businessUnitId` in the tool input to acquire a BU‑scoped token (`account_id`) before making the call.
+- SOAP: either supply `businessUnitId` to acquire a BU‑scoped token, or omit it and pass `options.clientIds: [<MID>]` to set BU context in the SOAP envelope.
+
+Auth reference: https://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_auth?meta=getAccessToken
 
 ## Troubleshooting
 - Token errors: verify Client ID/Secret/Subdomain and `MCE_PROFILE_DEFAULT`.
@@ -97,8 +116,6 @@ Security notes:
 - Inspect requests: increase logging in code or run client with verbose logs.
 
 ## More docs
-- Quickstart: `docs/QUICKSTART.md`
-- PRD: `docs/mce-mcp-prd.md`
-- Plan: `docs/mce-mcp-plan.md`
+- Quickstart and usage examples are maintained in this README.
 
 
