@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { AuthManager } from "../../core/auth.js";
-import { AppConfig, getActiveProfile, loadConfigFromEnv } from "../../core/config.js";
+import { AppConfig, MceProfile, getActiveProfile, loadConfigFromEnv } from "../../core/config.js";
 import { HttpClient } from "../../core/http.js";
 import { XMLParser } from "fast-xml-parser";
 
@@ -12,6 +12,7 @@ export const soapRequestInputSchema = z.object({
   options: z.record(z.any()).optional(),
   payloadRawXml: z.string().optional().describe("Optional raw XML payload to send as-is"),
   profile: z.string().optional(),
+  businessUnitId: z.string().optional().describe("Optional BU MID to scope SOAP token (account_id)"),
 });
 
 export type SoapRequestInput = z.infer<typeof soapRequestInputSchema>;
@@ -95,9 +96,12 @@ export class MceSoapProvider {
   ) {}
 
   async request(input: SoapRequestInput): Promise<SoapRequestOutput> {
-    const profile = getActiveProfile(this.config, input.profile);
-    if (!profile) throw new Error("No active profile configured.");
-    const token = await this.auth.getToken(profile);
+    const baseProfile = getActiveProfile(this.config, input.profile);
+    if (!baseProfile) throw new Error("No active profile configured.");
+    const effectiveProfile: MceProfile = input.businessUnitId
+      ? { ...baseProfile, businessUnitId: input.businessUnitId }
+      : baseProfile;
+    const token = await this.auth.getToken(effectiveProfile);
     // Normalize SOAP endpoint to /Service.asmx
     let soapBase = token.soap_instance_url || `https://${profile.subdomain}.soap.marketingcloudapis.com/Service.asmx`;
     try {
@@ -108,7 +112,11 @@ export class MceSoapProvider {
       soapBase = u.toString();
     } catch {}
 
-    const bodyXml = buildActionBody(input);
+    // If we acquired a BU-scoped token, don't also pass ClientIDs to avoid cross-BU permission errors
+    const adjustedInput = input.businessUnitId
+      ? { ...input, options: { ...(input.options || {}), clientIds: undefined } }
+      : input;
+    const bodyXml = buildActionBody(adjustedInput);
     const envelope = buildSoapEnvelope(token.access_token, bodyXml);
     const res = await this.http.request(soapBase, {
       method: "POST",

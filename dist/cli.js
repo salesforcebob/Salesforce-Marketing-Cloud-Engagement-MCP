@@ -135,33 +135,33 @@ var AuthManager = class {
     this.fetchImpl = fetchImpl;
   }
   tokens = /* @__PURE__ */ new Map();
-  key(profile) {
-    const context = profile.businessUnitId || profile.accountId || "";
-    return `${profile.name}:${context}`;
+  key(profile2) {
+    const context = profile2.businessUnitId || profile2.accountId || "";
+    return `${profile2.name}:${context}`;
   }
   isExpired(token) {
     const now = Date.now();
     const ageSec = (now - token.acquiredAt) / 1e3;
     return ageSec >= token.expires_in - 60;
   }
-  async getToken(profile) {
-    const key = this.key(profile);
+  async getToken(profile2) {
+    const key = this.key(profile2);
     const existing = this.tokens.get(key);
     if (existing && !this.isExpired(existing)) return existing;
-    const next = await this.fetchToken(profile);
+    const next = await this.fetchToken(profile2);
     this.tokens.set(key, next);
     return next;
   }
-  async fetchToken(profile) {
-    const url = `https://${profile.subdomain}.auth.marketingcloudapis.com/v2/token`;
+  async fetchToken(profile2) {
+    const url = `https://${profile2.subdomain}.auth.marketingcloudapis.com/v2/token`;
     const body = {
       grant_type: "client_credentials",
-      client_id: profile.clientId,
-      client_secret: profile.clientSecret,
+      client_id: profile2.clientId,
+      client_secret: profile2.clientSecret,
       // Prefer Business Unit MID when provided; falls back to top-level Account MID
-      account_id: profile.businessUnitId || profile.accountId
+      account_id: profile2.businessUnitId || profile2.accountId
     };
-    if (!profile.accountId && !profile.businessUnitId) delete body.account_id;
+    if (!profile2.accountId && !profile2.businessUnitId) delete body.account_id;
     const res = await this.fetchImpl(url, {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -213,11 +213,11 @@ var MceRestProvider = class {
     return url.toString();
   }
   async request(input) {
-    const profile = getActiveProfile(this.config, input.profile);
-    if (!profile) {
+    const profile2 = getActiveProfile(this.config, input.profile);
+    if (!profile2) {
       throw new Error("No active profile configured. Set env vars MCE_<PROFILE>_* or MCE_PROFILE_DEFAULT.");
     }
-    const effectiveProfile = input.businessUnitId ? { ...profile, businessUnitId: input.businessUnitId } : profile;
+    const effectiveProfile = input.businessUnitId ? { ...profile2, businessUnitId: input.businessUnitId } : profile2;
     const token = await this.auth.getToken(effectiveProfile);
     const restBase = token.rest_instance_url || `https://${effectiveProfile.subdomain}.rest.marketingcloudapis.com/`;
     const url = this.buildUrl(restBase, input.path, input.query);
@@ -271,7 +271,8 @@ var soapRequestInputSchema = z4.object({
   filter: z4.any().optional(),
   options: z4.record(z4.any()).optional(),
   payloadRawXml: z4.string().optional().describe("Optional raw XML payload to send as-is"),
-  profile: z4.string().optional()
+  profile: z4.string().optional(),
+  businessUnitId: z4.string().optional().describe("Optional BU MID to scope SOAP token (account_id)")
 });
 function buildSoapEnvelope(token, bodyXml) {
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -327,9 +328,10 @@ var MceSoapProvider = class {
     this.config = config;
   }
   async request(input) {
-    const profile = getActiveProfile(this.config, input.profile);
-    if (!profile) throw new Error("No active profile configured.");
-    const token = await this.auth.getToken(profile);
+    const baseProfile = getActiveProfile(this.config, input.profile);
+    if (!baseProfile) throw new Error("No active profile configured.");
+    const effectiveProfile = input.businessUnitId ? { ...baseProfile, businessUnitId: input.businessUnitId } : baseProfile;
+    const token = await this.auth.getToken(effectiveProfile);
     let soapBase = token.soap_instance_url || `https://${profile.subdomain}.soap.marketingcloudapis.com/Service.asmx`;
     try {
       const u = new URL(soapBase);
@@ -339,7 +341,8 @@ var MceSoapProvider = class {
       soapBase = u.toString();
     } catch {
     }
-    const bodyXml = buildActionBody(input);
+    const adjustedInput = input.businessUnitId ? { ...input, options: { ...input.options || {}, clientIds: void 0 } } : input;
+    const bodyXml = buildActionBody(adjustedInput);
     const envelope = buildSoapEnvelope(token.access_token, bodyXml);
     const res = await this.http.request(soapBase, {
       method: "POST",
