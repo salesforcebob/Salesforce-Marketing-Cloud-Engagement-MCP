@@ -8,8 +8,7 @@
     "MCE_DEV_CLIENT_ID": { "required": true },
     "MCE_DEV_CLIENT_SECRET": { "required": true },
     "MCE_DEV_SUBDOMAIN": { "required": true },
-    "MCE_DEV_ACCOUNT_ID": { "required": false },
-    "PORT": { "required": false, "value": "3000" }
+    "MCE_DEV_ACCOUNT_ID": { "required": false }
   },
   "stack": "heroku-22",
   "scripts": {

@@ -1,8 +1,43 @@
-## MCE MCP Server
+<div align="center">
 
-Model Context Protocol (MCP) server for Salesforce Marketing Cloud Engagement (MCE). Provides:
-- Generic tools for all MCE REST and SOAP APIs
+# Marketing Cloud Engagement MCP Server
+
+Model Context Protocol (MCP) server for Salesforce Marketing Cloud Engagement (MCE)
+
+<br/>
+
+[![npm version](https://img.shields.io/npm/v/%40salesforcebob/salesforce-marketing-cloud-engagement-mcp?color=0176d3&label=npm)](https://www.npmjs.com/package/@salesforcebob/salesforce-marketing-cloud-engagement-mcp)
+[![node](https://img.shields.io/badge/node-%E2%89%A518.17-333?logo=node.js)](https://nodejs.org)
+[![license](https://img.shields.io/badge/license-MIT-00b1e4.svg)](LICENSE)
+[![MCP](https://img.shields.io/badge/MCP-Server-4327ff)](https://github.com/modelcontextprotocol)
+
+<sub>Underscore tool names. BU‑scoped tokens for REST and SOAP. Plug‑and‑play with Cursor.</sub>
+
+</div>
+
+---
+
+### What you get
+
+- Generic tools for all Marketing Cloud Engagement REST and SOAP APIs
+- BU‑scoped authentication (account_id) and SOAP ClientIDs support
+- Content Builder utilities (create assets like HTML emails)
 - AMPScript and SSJS developer utilities (format/lint)
+
+---
+
+### Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Install](#install)
+- [Configure authentication](#configure-authentication)
+- [Run via npx](#run-via-npx-recommended)
+- [Using with Cursor](#using-with-cursor)
+- [Things you can ask Cursor to do](#things-you-can-ask-cursor-to-do-with-this-mcp)
+- [Available tools](#available-tools)
+- [Business Unit scoping](#business-unit-scoping)
+- [Troubleshooting](#troubleshooting)
+- [More docs](#more-docs)
 
 ### Prerequisites
 - Node.js 18.17+
@@ -59,7 +94,7 @@ This starts an MCP stdio server. Use it with MCP-compatible clients.
    - `mce_v1_rest_request`
    - `mce_v1_soap_request`
 
-Example tool call (REST — BU‑scoped):
+Example (REST — BU‑scoped):
 ```
 {
   "tool": "mce_v1_rest_request",
@@ -84,23 +119,80 @@ Example tool call (REST — BU‑scoped):
 - Get DE rows by filter: “Return up to 50 rows from ‘Email_HappyBirthday’ where EmailAddress ends with ‘@example.com’ in BU 523027277.”
 - Health check: “Ping the MCE server to verify it’s ready.”
 
+Quick JSON examples
+
+List journeys in a BU
+```
+{
+  "tool": "mce_v1_rest_request",
+  "input": {
+    "method": "GET",
+    "path": "/interaction/v1/interactions",
+    "query": { "page": 1, "pageSize": 200 },
+    "businessUnitId": "<MID>"
+  }
+}
+```
+
+Retrieve Email folders via SOAP
+```
+{
+  "tool": "mce_v1_soap_request",
+  "input": {
+    "action": "Retrieve",
+    "objectType": "DataFolder",
+    "properties": ["ID","Name","CustomerKey","ContentType","ParentFolder.ID","ParentFolder.Name"],
+    "filter": { "property": "ContentType", "operator": "equals", "value": "email" },
+    "businessUnitId": "<MID>"
+  }
+}
+```
+
 ## Using with Claude Code (Claude Desktop)
 1. Open Claude Desktop → Settings → MCP Servers.
 2. Add a stdio server entry with command `pnpm dev` and working directory as the repo.
 3. Save and restart Claude Desktop. Tools appear under MCP tools.
 
-## Running remotely (HTTP/WebSocket)
-This project currently defaults to stdio. To run as a service, you can use a process manager and expose stdio via a wrapper or extend transports to HTTP/WebSocket in code (see PRD/plan for transport support). For basic remote usage:
-- Run the server with `pnpm dev` under a supervisor (systemd/pm2) and configure your MCP client to run it on the host (SSH remote command) or adapt the transport to HTTP.
+## Running remotely (Hosted / HTTP)
+This server includes an Express HTTP transport wired via `StreamableHTTPServerTransport`.
+
+### Local HTTP (for testing)
+```
+pnpm web
+# Endpoints
+# GET  http://localhost:3000/health → { ok: true }
+# GET  http://localhost:3000/docs   → { doc: "..." }
+# POST http://localhost:3000/mcp    → MCP HTTP endpoint for clients that support HTTP transport
+```
+
+### One‑click deploy to Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/salesforcebob/Salesforce-Marketing-Cloud-Engagement-MCP)
+
+After clicking Deploy:
+- Set required env vars (at minimum): `MCE_PROFILE_DEFAULT`, `MCE_DEV_CLIENT_ID`, `MCE_DEV_CLIENT_SECRET`, `MCE_DEV_SUBDOMAIN` (and optionally `MCE_DEV_ACCOUNT_ID`).
+- Deploy and open the app. Verify:
+  - `GET /health` returns `{ ok: true }`
+  - `GET /docs` returns a documentation payload
+  - `POST /mcp` is the MCP HTTP endpoint for tools
+
+Notes:
+- Heroku assigns `PORT` dynamically; the server reads `process.env.PORT` automatically.
+
+Using with HTTP‑capable MCP clients:
+- Point the client at `<your-app-url>/mcp` as the MCP HTTP endpoint.
+- Tools available: `mce_v1_health`, `mce_v1_rest_request`, `mce_v1_soap_request`, `mce_v1_documentation`.
 
 Security notes:
 - Scope your Installed Package to least privilege.
 - Treat `.env` as sensitive; store secrets securely in production.
+- You'll probably want JWT or other additional security layer in front of this. Don't run this as a server on a open/public route, or anyone could pwn your MCE account.
 
 ## Available tools
 - `mce_v1_health` — health check
 - `mce_v1_rest_request` — generic REST request to MCE (supports BU scoping)
 - `mce_v1_soap_request` — generic SOAP request to MCE (supports BU scoping)
+ - `mce_v1_documentation` — returns curated MCE docs and MCP usage guide
 - AMPScript: formatter/linter (local utilities)
 - SSJS: formatter/linter (local utilities)
 
@@ -116,6 +208,6 @@ Auth reference: https://developer.salesforce.com/docs/marketing/marketing-cloud/
 - Inspect requests: increase logging in code or run client with verbose logs.
 
 ## More docs
-- Quickstart and usage examples are maintained in this README.
+- Run `mce_v1_documentation` in your MCP client to see curated docs and usage.
 
 
