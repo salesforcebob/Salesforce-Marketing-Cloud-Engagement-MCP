@@ -38,10 +38,10 @@ export async function createServer() {
     }
   );
 
-  // Register generic REST tool (underscore name to align with client expectations)
+  // Register generic REST tool (dot name canonical)
   const restProvider = new MceRestProvider();
   mcpServer.registerTool(
-    "mce_v1_rest_request",
+    "mce.v1.rest.request",
     {
       description:
         "Generic REST request for Salesforce Marketing Cloud Engagement. Provide method, path, query, headers, and optional JSON body. OAuth is injected; retries and timeouts handled.",
@@ -92,10 +92,10 @@ export async function createServer() {
   );
 
 
-  // Register generic SOAP tool (underscore name to align with client expectations)
+  // Register generic SOAP tool (dot name canonical)
   const soapProvider = new MceSoapProvider();
   mcpServer.registerTool(
-    "mce_v1_soap_request",
+    "mce.v1.soap.request",
     {
       description:
         "Generic SOAP request for Salesforce Marketing Cloud Engagement. Supports Create, Retrieve, Update, Delete, Perform, Configure. Either provide properties/filter/options or a raw XML payload.",
