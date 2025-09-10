@@ -437,11 +437,79 @@ async function createServer() {
       };
     }
   );
+  mcpServer.registerTool(
+    "mce_v1_rest_request",
+    {
+      description: "Generic REST request (alias). Same as mce.v1.rest.request.",
+      inputSchema: {
+        method: z5.enum(["GET", "POST", "PUT", "PATCH", "DELETE"]),
+        path: z5.string().describe("Path under REST base, e.g., /asset/v1/content/assets"),
+        query: z5.record(z5.any()).optional(),
+        headers: z5.record(z5.string()).optional(),
+        body: z5.any().optional(),
+        timeoutMs: z5.number().int().positive().optional(),
+        attachments: z5.array(
+          z5.object({
+            name: z5.string(),
+            mimeType: z5.string(),
+            dataBase64: z5.string()
+          })
+        ).optional(),
+        asAttachment: z5.boolean().default(false),
+        raw: z5.boolean().default(false),
+        profile: z5.string().optional()
+      },
+      outputSchema: {
+        status: z5.number(),
+        headers: z5.record(z5.string()),
+        data: z5.any().optional(),
+        attachment: z5.object({ name: z5.string(), mimeType: z5.string(), dataBase64: z5.string() }).optional()
+      }
+    },
+    async (args) => {
+      const out = await restProvider.request(args);
+      return {
+        content: [
+          { type: "text", text: `HTTP ${out.status} ${out.attachment ? "(attachment)" : ""}`.trim() }
+        ],
+        structuredContent: out
+      };
+    }
+  );
   const soapProvider = new MceSoapProvider();
   mcpServer.registerTool(
     "mce.v1.soap.request",
     {
       description: "Generic SOAP request for Salesforce Marketing Cloud Engagement. Supports Create, Retrieve, Update, Delete, Perform, Configure. Either provide properties/filter/options or a raw XML payload.",
+      inputSchema: {
+        action: z5.enum(["Create", "Retrieve", "Update", "Delete", "Perform", "Configure"]),
+        objectType: z5.string(),
+        properties: z5.record(z5.any()).optional(),
+        filter: z5.any().optional(),
+        options: z5.record(z5.any()).optional(),
+        payloadRawXml: z5.string().optional(),
+        profile: z5.string().optional()
+      },
+      outputSchema: {
+        status: z5.number(),
+        overallStatus: z5.string().optional(),
+        requestId: z5.string().optional(),
+        results: z5.array(z5.any()).optional(),
+        rawXml: z5.string().optional()
+      }
+    },
+    async (args) => {
+      const out = await soapProvider.request(args);
+      return {
+        content: [{ type: "text", text: `SOAP status=${out.status}` }],
+        structuredContent: out
+      };
+    }
+  );
+  mcpServer.registerTool(
+    "mce_v1_soap_request",
+    {
+      description: "Generic SOAP request (alias). Same as mce.v1.soap.request.",
       inputSchema: {
         action: z5.enum(["Create", "Retrieve", "Update", "Delete", "Perform", "Configure"]),
         objectType: z5.string(),

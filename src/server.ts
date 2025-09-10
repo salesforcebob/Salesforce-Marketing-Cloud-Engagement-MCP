@@ -90,6 +90,52 @@ export async function createServer() {
     }
   );
 
+  // Alias for clients expecting underscore naming
+  mcpServer.registerTool(
+    "mce_v1_rest_request",
+    {
+      description:
+        "Generic REST request (alias). Same as mce.v1.rest.request.",
+      inputSchema: {
+        method: z.enum(["GET", "POST", "PUT", "PATCH", "DELETE"]),
+        path: z.string().describe("Path under REST base, e.g., /asset/v1/content/assets"),
+        query: z.record(z.any()).optional(),
+        headers: z.record(z.string()).optional(),
+        body: z.any().optional(),
+        timeoutMs: z.number().int().positive().optional(),
+        attachments: z
+          .array(
+            z.object({
+              name: z.string(),
+              mimeType: z.string(),
+              dataBase64: z.string(),
+            })
+          )
+          .optional(),
+        asAttachment: z.boolean().default(false),
+        raw: z.boolean().default(false),
+        profile: z.string().optional(),
+      },
+      outputSchema: {
+        status: z.number(),
+        headers: z.record(z.string()),
+        data: z.any().optional(),
+        attachment: z
+          .object({ name: z.string(), mimeType: z.string(), dataBase64: z.string() })
+          .optional(),
+      },
+    },
+    async (args) => {
+      const out = await restProvider.request(args as any);
+      return {
+        content: [
+          { type: "text", text: `HTTP ${out.status} ${out.attachment ? "(attachment)" : ""}`.trim() },
+        ],
+        structuredContent: out,
+      };
+    }
+  );
+
   // Register generic SOAP tool
   const soapProvider = new MceSoapProvider();
   mcpServer.registerTool(
@@ -97,6 +143,38 @@ export async function createServer() {
     {
       description:
         "Generic SOAP request for Salesforce Marketing Cloud Engagement. Supports Create, Retrieve, Update, Delete, Perform, Configure. Either provide properties/filter/options or a raw XML payload.",
+      inputSchema: {
+        action: z.enum(["Create", "Retrieve", "Update", "Delete", "Perform", "Configure"]),
+        objectType: z.string(),
+        properties: z.record(z.any()).optional(),
+        filter: z.any().optional(),
+        options: z.record(z.any()).optional(),
+        payloadRawXml: z.string().optional(),
+        profile: z.string().optional(),
+      },
+      outputSchema: {
+        status: z.number(),
+        overallStatus: z.string().optional(),
+        requestId: z.string().optional(),
+        results: z.array(z.any()).optional(),
+        rawXml: z.string().optional(),
+      },
+    },
+    async (args) => {
+      const out = await soapProvider.request(args as any);
+      return {
+        content: [{ type: "text", text: `SOAP status=${out.status}` }],
+        structuredContent: out,
+      };
+    }
+  );
+
+  // Alias for clients expecting underscore naming
+  mcpServer.registerTool(
+    "mce_v1_soap_request",
+    {
+      description:
+        "Generic SOAP request (alias). Same as mce.v1.soap.request.",
       inputSchema: {
         action: z.enum(["Create", "Retrieve", "Update", "Delete", "Perform", "Configure"]),
         objectType: z.string(),
