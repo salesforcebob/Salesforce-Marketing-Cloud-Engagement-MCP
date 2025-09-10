@@ -48,10 +48,33 @@ function buildActionBody(input: SoapRequestInput): string {
           ? Object.keys(input.properties as Record<string, unknown>)
           : [];
         const propsXml = props.map((p) => `<Properties>${esc(p)}</Properties>`).join("");
+        const opt = (input.options || {}) as Record<string, any>;
+        const ids = opt.clientIds
+          ? (Array.isArray(opt.clientIds) ? opt.clientIds : [opt.clientIds])
+          : [];
+        const clientIdsXml = ids.length
+          ? `<ClientIDs>${ids
+              .map((id: any) => `<ClientID><ID>${esc(String(id))}</ID></ClientID>`)
+              .join("")}</ClientIDs>`
+          : "";
+        const queryAllXml = opt.queryAllAccounts ? `<QueryAllAccounts>true</QueryAllAccounts>` : "";
+        const continueXml = opt.continueRequest ? `<ContinueRequest>${esc(String(opt.continueRequest))}</ContinueRequest>` : "";
+        const f = input.filter as any;
+        const filterXml = f
+          ? `<Filter xsi:type="SimpleFilterPart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+               <Property>${esc(String(f.property || f.Property || "CustomerKey"))}</Property>
+               <SimpleOperator>${esc(String(f.operator || f.SimpleOperator || "equals"))}</SimpleOperator>
+               <Value>${esc(String(f.value ?? f.Value ?? ""))}</Value>
+             </Filter>`
+          : "";
         return `<RetrieveRequestMsg xmlns="${ns}">
           <RetrieveRequest>
             <ObjectType>${esc(input.objectType)}</ObjectType>
             ${propsXml}
+            ${clientIdsXml}
+            ${queryAllXml}
+            ${continueXml}
+            ${filterXml}
           </RetrieveRequest>
         </RetrieveRequestMsg>`;
       }
@@ -75,13 +98,27 @@ export class MceSoapProvider {
     const profile = getActiveProfile(this.config, input.profile);
     if (!profile) throw new Error("No active profile configured.");
     const token = await this.auth.getToken(profile);
-    const soapBase = token.soap_instance_url || `https://${profile.subdomain}.soap.marketingcloudapis.com/Service.asmx`;
+    // Normalize SOAP endpoint to /Service.asmx
+    let soapBase = token.soap_instance_url || `https://${profile.subdomain}.soap.marketingcloudapis.com/Service.asmx`;
+    try {
+      const u = new URL(soapBase);
+      if (!/Service\.asmx$/i.test(u.pathname)) {
+        u.pathname = (u.pathname.endsWith("/") ? u.pathname : u.pathname + "/") + "Service.asmx";
+      }
+      soapBase = u.toString();
+    } catch {}
 
     const bodyXml = buildActionBody(input);
     const envelope = buildSoapEnvelope(token.access_token, bodyXml);
     const res = await this.http.request(soapBase, {
       method: "POST",
-      headers: { "content-type": "text/xml; charset=utf-8" },
+      headers: {
+        "content-type": "text/xml; charset=utf-8",
+        SOAPAction:
+          input.action === "Retrieve"
+            ? "Retrieve"
+            : input.action,
+      },
       body: envelope,
     });
     const rawXml = await res.text();
