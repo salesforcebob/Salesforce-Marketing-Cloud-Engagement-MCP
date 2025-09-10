@@ -6,8 +6,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { MceRestProvider } from "./providers/mce/rest.js";
 import { MceSoapProvider } from "./providers/mce/soap.js";
 
-export async function createServer() {
-  const transport = new StdioServerTransport();
+export function buildMcpServer(): McpServer {
   const mcpServer = new McpServer(
     { name: "mce-mcp", version: "0.1.0" },
     { capabilities: { tools: {} } }
@@ -141,6 +140,7 @@ export async function createServer() {
         "- Marketing Cloud Engagement APIs and Programmatic Languages: https://developer.salesforce.com/docs/marketing/marketing-cloud/overview",
         "- Marketing Cloud Engagement Overview (Growth/Advanced): https://developer.salesforce.com/docs/marketing/marketing-cloud-growth/overview",
         "- AMPScript for Marketing Cloud: https://developer.salesforce.com/docs/marketing/marketing-cloud-ampscript/overview",
+        "- SSJS for Marketing Cloud: https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/ssjs_serverSideJavaScript.html",
         "- Engagement Mobile SDK (MobilePush): https://developer.salesforce.com/docs/marketing/engagement-mobile-sdk/overview",
         "- REST Auth – Get Access Token (BU scoping via account_id): https://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_auth?meta=getAccessToken",
         "",
@@ -194,7 +194,13 @@ export async function createServer() {
   );
 
 
-  await mcpServer.connect(transport);
+  return mcpServer;
+}
+
+export async function createServer() {
+  const transport = new StdioServerTransport();
+  const server = buildMcpServer();
+  await server.connect(transport);
 }
 
 

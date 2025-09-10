@@ -1,0 +1,19 @@
+{
+  "name": "mce-mcp",
+  "description": "Marketing Cloud Engagement MCP server (stdio + optional web endpoints)",
+  "repository": "https://github.com/salesforcebob/Salesforce-Marketing-Cloud-Engagement-MCP",
+  "keywords": ["mcp", "salesforce", "marketing-cloud", "exacttarget", "ai"],
+  "env": {
+    "MCE_PROFILE_DEFAULT": { "required": true, "description": "Default profile name (e.g., dev)" },
+    "MCE_DEV_CLIENT_ID": { "required": true },
+    "MCE_DEV_CLIENT_SECRET": { "required": true },
+    "MCE_DEV_SUBDOMAIN": { "required": true },
+    "MCE_DEV_ACCOUNT_ID": { "required": false },
+    "PORT": { "required": false, "value": "3000" }
+  },
+  "stack": "heroku-22",
+  "scripts": {
+    "postdeploy": "node -e \"console.log('Deployed mce-mcp web server. Hit /health and /docs endpoints.')\""
+  }
+}
+
