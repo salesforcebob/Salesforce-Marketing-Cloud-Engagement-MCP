@@ -11,7 +11,7 @@ Model Context Protocol (MCP) server for Salesforce Marketing Cloud Engagement (M
 [![license](https://img.shields.io/badge/license-MIT-00b1e4.svg)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-Server-4327ff)](https://github.com/modelcontextprotocol)
 
-<sub>Underscore tool names. BU‑scoped tokens for REST and SOAP. Plug‑and‑play with Cursor.</sub>
+<sub>Underscore tool names. BU‑scoped tokens for REST and SOAP. Plug‑and‑play with Cursor/Claude Desktop or run on Heroku with a click.</sub>
 
 </div>
 
