@@ -16,9 +16,9 @@ export async function createServer() {
   // Load config at startup (makes errors obvious early)
   loadConfigFromEnv();
 
-  // Register health as a proper MCP tool with structuredContent
+  // Register health as a proper MCP tool with structuredContent (underscore-only)
   mcpServer.registerTool(
-    "mce.v1.health",
+    "mce_v1_health",
     {
       description: "Health check tool. Echoes input and confirms server readiness.",
       inputSchema: {
@@ -38,10 +38,10 @@ export async function createServer() {
     }
   );
 
-  // Register generic REST tool (dot name canonical)
+  // Register generic REST tool (underscore-only)
   const restProvider = new MceRestProvider();
   mcpServer.registerTool(
-    "mce.v1.rest.request",
+    "mce_v1_rest_request",
     {
       description:
         "Generic REST request for Salesforce Marketing Cloud Engagement. Provide method, path, query, headers, and optional JSON body. OAuth is injected; retries and timeouts handled.",
@@ -91,11 +91,10 @@ export async function createServer() {
     }
   );
 
-
-  // Register generic SOAP tool (dot name canonical)
+  // Register generic SOAP tool (underscore-only)
   const soapProvider = new MceSoapProvider();
   mcpServer.registerTool(
-    "mce.v1.soap.request",
+    "mce_v1_soap_request",
     {
       description:
         "Generic SOAP request for Salesforce Marketing Cloud Engagement. Supports Create, Retrieve, Update, Delete, Perform, Configure. Either provide properties/filter/options or a raw XML payload.",
