@@ -38,6 +38,7 @@ Model Context Protocol (MCP) server for Salesforce Marketing Cloud Engagement (M
 - [Business Unit scoping](#business-unit-scoping)
 - [Troubleshooting](#troubleshooting)
 - [More docs](#more-docs)
+ - [Disclaimer](#disclaimer)
 
 ### Prerequisites
 - Node.js 18.17+
@@ -211,3 +212,9 @@ Auth reference: https://developer.salesforce.com/docs/marketing/marketing-cloud/
 - Run `mce_v1_documentation` in your MCP client to see curated docs and usage.
 
 
+
+## Disclaimer
+- This repository and MCP server are provided "as is" without warranties or guarantees of any kind, express or implied, including but not limited to functionality, security, merchantability, or fitness for a particular purpose.
+- Use at your own risk. Review the source, perform a security assessment, and harden before any production deployment.
+- Do not expose the HTTP endpoints publicly without proper authentication/authorization, rate limiting, logging, and monitoring.
+- You are solely responsible for the protection of your credentials, secrets, data, and compliance with your organization’s security policies.
