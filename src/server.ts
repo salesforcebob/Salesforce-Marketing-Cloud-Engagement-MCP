@@ -66,6 +66,7 @@ export async function createServer() {
         asAttachment: z.boolean().default(false),
         raw: z.boolean().default(false),
         profile: z.string().optional(),
+        businessUnitId: z.string().optional(),
       },
       outputSchema: {
         status: z.number(),

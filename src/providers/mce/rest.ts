@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { HttpClient } from "../../core/http.js";
 import { AuthManager } from "../../core/auth.js";
-import { AppConfig, getActiveProfile, loadConfigFromEnv } from "../../core/config.js";
+import { AppConfig, MceProfile, getActiveProfile, loadConfigFromEnv } from "../../core/config.js";
 
 export const restRequestInputSchema = z.object({
   method: z.enum(["GET", "POST", "PUT", "PATCH", "DELETE"]),
@@ -17,7 +17,8 @@ export const restRequestInputSchema = z.object({
     .optional(),
   asAttachment: z.boolean().default(false).describe("If true, stream response as attachment when large"),
   raw: z.boolean().default(false).describe("If true, return raw response body without normalization"),
-  profile: z.string().optional().describe("Named auth profile to use")
+  profile: z.string().optional().describe("Named auth profile to use"),
+  businessUnitId: z.string().optional().describe("Optional BU MID to scope token (account_id)")
 });
 
 export type RestRequestInput = z.infer<typeof restRequestInputSchema>;
@@ -56,15 +57,16 @@ export class MceRestProvider {
     if (!profile) {
       throw new Error("No active profile configured. Set env vars MCE_<PROFILE>_* or MCE_PROFILE_DEFAULT.");
     }
-    const token = await this.auth.getToken(profile);
-    const restBase = token.rest_instance_url || `https://${profile.subdomain}.rest.marketingcloudapis.com/`;
+    const effectiveProfile: MceProfile = input.businessUnitId
+      ? { ...profile, businessUnitId: input.businessUnitId }
+      : profile;
+    const token = await this.auth.getToken(effectiveProfile);
+    const restBase = token.rest_instance_url || `https://${effectiveProfile.subdomain}.rest.marketingcloudapis.com/`;
     const url = this.buildUrl(restBase, input.path, input.query);
 
     const headers = {
       Authorization: `Bearer ${token.access_token}`,
       "content-type": input.body ? "application/json" : undefined,
-      // If a BU is configured, pass the override header so REST routes to that BU
-      ...(profile.businessUnitId ? { "x-mc-override-usermid": String(profile.businessUnitId) } : {}),
       ...(input.headers || {}),
     } as Record<string, string>;
     if (!headers["content-type"]) delete headers["content-type"];

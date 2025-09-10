@@ -190,7 +190,8 @@ var restRequestInputSchema = z3.object({
   ).optional(),
   asAttachment: z3.boolean().default(false).describe("If true, stream response as attachment when large"),
   raw: z3.boolean().default(false).describe("If true, return raw response body without normalization"),
-  profile: z3.string().optional().describe("Named auth profile to use")
+  profile: z3.string().optional().describe("Named auth profile to use"),
+  businessUnitId: z3.string().optional().describe("Optional BU MID to scope token (account_id)")
 });
 var MceRestProvider = class {
   http;
@@ -216,14 +217,13 @@ var MceRestProvider = class {
     if (!profile) {
       throw new Error("No active profile configured. Set env vars MCE_<PROFILE>_* or MCE_PROFILE_DEFAULT.");
     }
-    const token = await this.auth.getToken(profile);
-    const restBase = token.rest_instance_url || `https://${profile.subdomain}.rest.marketingcloudapis.com/`;
+    const effectiveProfile = input.businessUnitId ? { ...profile, businessUnitId: input.businessUnitId } : profile;
+    const token = await this.auth.getToken(effectiveProfile);
+    const restBase = token.rest_instance_url || `https://${effectiveProfile.subdomain}.rest.marketingcloudapis.com/`;
     const url = this.buildUrl(restBase, input.path, input.query);
     const headers = {
       Authorization: `Bearer ${token.access_token}`,
       "content-type": input.body ? "application/json" : void 0,
-      // If a BU is configured, pass the override header so REST routes to that BU
-      ...profile.businessUnitId ? { "x-mc-override-usermid": String(profile.businessUnitId) } : {},
       ...input.headers || {}
     };
     if (!headers["content-type"]) delete headers["content-type"];
@@ -419,7 +419,8 @@ async function createServer() {
         ).optional(),
         asAttachment: z5.boolean().default(false),
         raw: z5.boolean().default(false),
-        profile: z5.string().optional()
+        profile: z5.string().optional(),
+        businessUnitId: z5.string().optional()
       },
       outputSchema: {
         status: z5.number(),
