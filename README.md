@@ -21,8 +21,7 @@ Model Context Protocol (MCP) server for Salesforce Marketing Cloud Engagement (M
 
 - Generic tools for all Marketing Cloud Engagement REST and SOAP APIs
 - BU‑scoped authentication (account_id) and SOAP ClientIDs support
-- Content Builder utilities (create assets like HTML emails)
-- AMPScript and SSJS developer utilities (format/lint)
+- Turn-key Heroku MCP deployment and compatibility with [Heroku Managed Inference and Agents](https://devcenter.heroku.com/articles/heroku-inference-working-with-mcp#register-a-custom-mcp-server-with-heroku)
 
 ---
 
