@@ -1,7 +1,7 @@
 {
   "name": "@salesforcebob/salesforce-marketing-cloud-engagement-mcp",
   "author": "Bob Ullery, Distinguished Technical Architect @ Salesforce",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": false,
   "type": "module",
   "description": "Model Context Protocol (MCP) server for Salesforce Marketing Cloud Engagement (MCE)",
