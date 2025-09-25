@@ -171,10 +171,23 @@ pnpm web
 
 After clicking Deploy:
 - Set required env vars (at minimum): `MCE_PROFILE_DEFAULT`, `MCE_DEV_CLIENT_ID`, `MCE_DEV_CLIENT_SECRET`, `MCE_DEV_SUBDOMAIN` (and optionally `MCE_DEV_ACCOUNT_ID`).
+
+### Running as a Heroku Managed Inference & Agents compatible MCP server (recommended)
+
+This MCP is compatible with Heroku Managed Inference and Agents (HMIA), which provide APIs to interact with the MCP server securely. This is the recommend approach to running the MCP server.
+
+It's also a solid foundation to expand upon. HMIA makes connecting additional MCP servers and tools to a common entry point app fast, trivial and secure.
+
+### Running as a web server (not recommended):
+It's not recommended to run the server as a web process as it does not contain any web auth logic in front of the web process - you'll need to add access control if you want to run the web server in production.
+
 - Deploy and open the app. Verify:
   - `GET /health` returns `{ ok: true }`
   - `GET /docs` returns a documentation payload
   - `POST /mcp` is the MCP HTTP endpoint for tools
+
+If you want to disable the web process you can do so from your Heroku app's dashboard > Resources, and turn off the dyno related to "web".
+
 
 Notes:
 - Heroku assigns `PORT` dynamically; the server reads `process.env.PORT` automatically.
