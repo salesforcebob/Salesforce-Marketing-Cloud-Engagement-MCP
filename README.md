@@ -11,7 +11,7 @@ Model Context Protocol (MCP) server for Salesforce Marketing Cloud Engagement (M
 [![license](https://img.shields.io/badge/license-MIT-00b1e4.svg)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-Server-4327ff)](https://github.com/modelcontextprotocol)
 
-<sub>Underscore tool names. BU‑scoped tokens for REST and SOAP. Plug‑and‑play with Cursor/Claude Desktop or run on Heroku with a click.</sub>
+<sub>Give your agents full access to all Marketing Cloud Engagement REST and SOAP capabilities. Plug‑and‑play with Cursor/Claude Desktop or run on Heroku with a click and connect to your Agentforce Agents.</sub>
 
 </div>
 
@@ -178,7 +178,7 @@ This MCP is compatible with Heroku Managed Inference and Agents (HMIA), which pr
 
 It's also a solid foundation to expand upon. HMIA makes connecting additional MCP servers and tools to a common entry point app fast, trivial and secure.
 
-### Running as a web server (not recommended):
+### Running as a web server (not recommended without additional security added):
 It's not recommended to run the server as a web process as it does not contain any web auth logic in front of the web process - you'll need to add access control if you want to run the web server in production.
 
 - Deploy and open the app. Verify:
